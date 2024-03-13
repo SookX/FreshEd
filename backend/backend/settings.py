@@ -151,7 +151,7 @@ DJOSER = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    os.getenv('CORS_URL')
+    'http://localhost:5173'
 ]
 
 AUTH_USER_MODEL = 'user_profile.UserAccount'

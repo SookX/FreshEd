@@ -147,4 +147,8 @@ DJOSER = {
 
 }
 
+CORS_ALLOWED_ORIGINS = [
+    os.getenv("CORS_URL"),
+]
+
 AUTH_USER_MODEL = 'user_profile.UserAccount'

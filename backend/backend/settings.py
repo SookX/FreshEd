@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "school",
     'authenticate',
     'user_profile',
-    
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +46,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -147,8 +149,14 @@ DJOSER = {
 
 }
 
+<<<<<<< Updated upstream
 CORS_ALLOWED_ORIGINS = [
     os.getenv("CORS_URL"),
 ]
 
 AUTH_USER_MODEL = 'user_profile.UserAccount'
+=======
+AUTH_USER_MODEL = 'user_profile.UserAccount'
+
+CORS_ALLOW_ALL_ORIGINS = True
+>>>>>>> Stashed changes

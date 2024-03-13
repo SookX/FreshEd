@@ -5,7 +5,7 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-    const [role, setRole] = useState(2)
+    const [role, setRole] = useState(0)
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
@@ -33,7 +33,7 @@ const Register = () => {
             setEmail('')
             setFirstName('')
             setLastName('')
-            setRole(2)
+            setRole(0)
             setPassword('')
             setConfirmPassword('')
         }
@@ -65,7 +65,7 @@ const Register = () => {
             <label htmlFor="role">I am a:</label>
 
             <select value={role} onChange={(e) => setRole(e.target.value)} id="role">
-                <option value={2}>Student</option>
+                <option value={0}>Student</option>
                 <option value={1}>Teacher</option>
             </select>
 

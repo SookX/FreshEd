@@ -30,7 +30,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'djoser',
     "school",
+    'authenticate',
+    'user_profile',
+    
 ]
 
 MIDDLEWARE = [
@@ -119,3 +124,27 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DJOSER = {
+    'LOGIN_FIELD': 'email', # email as login field
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'PASSWORD_VALIDATORS': [],
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'SEND_CONFIRMATION_EMAIL': False,
+    'SET_USERNAME_RETYPE': False,
+    'SET_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': False,
+    'SERIALIZERS': {
+        'user_create': 'authenticate.serializers.UserCreateSerializer',
+        'user': 'authenticate.serializers.UserCreateSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
+        
+    }
+
+}
+
+AUTH_USER_MODEL = 'user_profile.UserAccount'

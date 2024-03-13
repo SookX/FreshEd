@@ -149,14 +149,8 @@ DJOSER = {
 
 }
 
-<<<<<<< Updated upstream
 CORS_ALLOWED_ORIGINS = [
     os.getenv("CORS_URL"),
 ]
 
 AUTH_USER_MODEL = 'user_profile.UserAccount'
-=======
-AUTH_USER_MODEL = 'user_profile.UserAccount'
-
-CORS_ALLOW_ALL_ORIGINS = True
->>>>>>> Stashed changes

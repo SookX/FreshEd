@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
 :root {
     /* --bg : #171a45; BLUE */
     /* --bg: #17001c; PURPLE */
@@ -47,6 +49,7 @@ html {
     background-color: var(--bg);
     color: white;
     font-size: 62.5%;
+    font-family: 'Madimi One', sans-serif;
 }
 
 .test {

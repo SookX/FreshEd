@@ -31,11 +31,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'corsheaders',
     'djoser',
     "school",
     'authenticate',
     'user_profile',
-    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 DJOSER = {
-    'LOGIN_FIELD': 'email', # email as login field
+    'LOGIN_FIELD': 'email', 
     'USER_CREATE_PASSWORD_RETYPE': True,
     'PASSWORD_VALIDATORS': [],
     'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
@@ -150,7 +151,7 @@ DJOSER = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    os.getenv("CORS_URL"),
+    os.getenv('CORS_URL')
 ]
 
 AUTH_USER_MODEL = 'user_profile.UserAccount'

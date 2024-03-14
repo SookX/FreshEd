@@ -1,4 +1,4 @@
-import brain from '../img/school-backpack-neon-sign-pupil-600nw-1434179477.png'
+import brain from '../img/hat.png'
 
 const Home = () => {
 

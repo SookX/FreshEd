@@ -53,6 +53,6 @@
     width: 75%;
     display: block;
     margin: 0 auto;
-    /* background-color: aquamarine; */
+
     filter: saturate(50%);
 }

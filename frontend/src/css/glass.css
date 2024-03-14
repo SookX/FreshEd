@@ -64,3 +64,7 @@
     box-shadow: 0 0 70px rgba(255, 0, 0, 0.8);
     filter: blur(100px);
 }
+
+.bg-trdt {
+    background-color: red;
+}

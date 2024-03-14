@@ -3,9 +3,24 @@
 }
 
 .account-container {
-    /* background-color: aqua; */
-
-    /* max-width: 70rem; */
+    border-radius: 15px;
+    /* margin: 30px; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    /* backdrop-filter: blur(10px); */
+    /* transform-style: preserve-3d; */
+    /* transform: perspective(10px); */
+    background: rgba(255, 255, 255, 0.15);
+    /* pointer-events: none; */
+    border-radius: 15px;
+    backdrop-filter: blur(1100px);
+    
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 6.4rem;
 }
 
 .account-text-box {
@@ -27,6 +42,12 @@
     max-width: 70rem;
 }
 
-.backgroungColor {
-    background-color: red !important;
+.form-account input {
+    background-color: transparent;
+    border: none;
+    border-radius: 15px;
+    padding: 1.6rem 3.2rem;
+    color: white;
+    font-size: 1.8rem;
+    font-family: inherit;
 }

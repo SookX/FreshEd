@@ -49,8 +49,9 @@ const Login = () => {
 
 
     return (
-        <section className="section-account">
-            <Glass classes="backgroungColor">
+        <section  className="section-account">
+            <Glass classes='bg-trdt'>
+            {/* <div className="account-container"> */}
                 <div className="account-text-box">
                     <h2 className="account-heading">Log In to Your Account</h2>
                 </div>
@@ -70,8 +71,9 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <button type="submit">Log In</button>
+                    <button type="submit" className="btn">Log In</button>
                 </form>
+            {/* </div> */}
             </Glass>
         </section>
     )

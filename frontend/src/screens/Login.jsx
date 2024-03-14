@@ -3,10 +3,13 @@ import axios from 'axios'
 import { DataContext } from "../context/DataContext";
 
 import '../css/account.css'
+import Glass from "../components/Glass";
 
 const Login = () => {
     const { loggedIn, setLoggedIn, navigate } = useContext(DataContext)
 
+
+    // LOG IN SYSTEM
     useEffect(() => {
         if(loggedIn) navigate('/')
     }, [loggedIn])
@@ -44,24 +47,33 @@ const Login = () => {
         }
     }
 
+
     return (
-        <form onSubmit={(e) => handleSubmit(e)} className="section-account">
-            <input
-                type="email" 
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
+        <section  className="section-account">
+            <Glass>
+                <div className="account-text-box">
+                    <h2 className="account-heading">Log In to Your Account</h2>
+                </div>
 
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                <form onSubmit={(e) => handleSubmit(e)} className="form-account">
+                    <input
+                        type="email" 
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
-            <button type="submit">Log In</button>
-        </form>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                    <button type="submit">Log In</button>
+                </form>
+            </Glass>
+        </section>
     )
 }
 

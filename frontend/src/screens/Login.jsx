@@ -49,9 +49,9 @@ const Login = () => {
 
 
     return (
-        <section  className="section-account">
-            <Glass classes='account-container'>
-            {/* <div className="account-container"> */}
+        <section className="section-account">
+            <Glass classes='account-container green' >
+                {/* <div className="account-container"> */}
                 <div className="account-text-box">
                     <h2 className="account-heading">Log In to Your Account</h2>
                 </div>
@@ -73,7 +73,7 @@ const Login = () => {
 
                     <button type="submit" className="btn">Log In</button>
                 </form>
-            {/* </div> */}
+                {/* </div> */}
             </Glass>
         </section>
     )

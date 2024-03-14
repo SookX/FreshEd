@@ -3,7 +3,7 @@ import json
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Exercise, Test, Answers, Class, Teacher
-from .serializers import testSerializer, answersSerializer, exerciseSerializer
+from .serializers import testSerializer, answersSerializer, exerciseSerializer, CombinedSerializer
 import json
 # Create your views here.
 
@@ -22,15 +22,6 @@ def addSchool(request, *args, **kwargs):
 
 
 
-@api_view(['GET'])
-def combined_data(request, *args, **kwargs):
-    combined_data = {
-        'tests': Test.objects.all(),
-        'exercises': Exercise.objects.all(),
-        'answers': Answers.objects.all()
-    }
-    serializer = CombinedSerializer(combined_data)
-    return Response(serializer.data)
 
 @api_view(['GET'])
 def combined_data(request, *args, **kwargs):

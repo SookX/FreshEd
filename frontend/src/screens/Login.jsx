@@ -11,12 +11,12 @@ const Login = () => {
 
     // LOG IN SYSTEM
     useEffect(() => {
-        if(loggedIn) navigate('/')
+        if (loggedIn) navigate('/')
     }, [loggedIn])
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -30,8 +30,8 @@ const Login = () => {
 
             console.log(response)
 
-            if(response.status === 200) {
-                localStorage.setItem('accData', JSON.stringify({id: response.data.id}))
+            if (response.status === 200) {
+                localStorage.setItem('accData', JSON.stringify({ id: response.data.id }))
 
                 setLoggedIn(true)
 
@@ -39,7 +39,7 @@ const Login = () => {
 
                 navigate('/')
             }
-        } catch(err) {
+        } catch (err) {
             console.log(err)
         } finally {
             setEmail('')
@@ -49,15 +49,15 @@ const Login = () => {
 
 
     return (
-        <section  className="section-account">
-            <Glass>
+        <section className="section-account">
+            <Glass classes="backgroungColor">
                 <div className="account-text-box">
                     <h2 className="account-heading">Log In to Your Account</h2>
                 </div>
 
                 <form onSubmit={(e) => handleSubmit(e)} className="form-account">
                     <input
-                        type="email" 
+                        type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}

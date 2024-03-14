@@ -4,7 +4,7 @@
 
 .account-container {
     /* background-color: aqua; */
-    
+
     /* max-width: 70rem; */
 }
 
@@ -25,4 +25,8 @@
     gap: 2.4rem;
     margin: 0 auto;
     max-width: 70rem;
+}
+
+.backgroungColor {
+    background-color: red !important;
 }

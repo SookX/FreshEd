@@ -1,6 +1,6 @@
 /* .section-balala { */
-    /* background-image: url("../img/bacgroundimage.jpg"); */
-    /* background-color: var(--bg);
+/* background-image: url("../img/bacgroundimage.jpg"); */
+/* background-color: var(--bg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -13,13 +13,13 @@
     /* width: 70rem; */
     /* height: 40rem; */
     border-radius: 15px;
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
 }
 
 .glassmorphism-container {
     position: relative;
-    /* width:280px; */
-    /* height:400px; */
+    width: 280px;
+    height: 400px;
     /* box-shadow: 20px 20px 50px rgba(0,0,0,0.5); */
     border-radius: 15px;
     margin: 30px;
@@ -30,7 +30,7 @@
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     transform-style: preserve-3d;
-    transform: perspective(10px)
+    /* transform: perspective(3px) */
 }
 
 .glassmorphism-div {

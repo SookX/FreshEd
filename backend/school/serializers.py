@@ -1,17 +1,31 @@
 from rest_framework import serializers
-from .models import Test, Answers, Exercise
+from .models import Test, Exercise, Answers
 
-class testSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Test
-        fields = ['id', 'title']
+class CombinedSerializer(serializers.Serializer):
+    tests = serializers.SerializerMethodField()
 
-class answersSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Answers
-        fields = ['id', 'name', 'ans']
-
-class exerciseSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Exercise
-        fields = ['id', 'name', 'question']
+    def get_tests(self, obj):
+        tests = Test.objects.all()
+        serialized_tests = []
+        for test in tests:
+            exercises = Exercise.objects.filter(question__in=[test])
+            serialized_exercises = []
+            for exercise in exercises:
+                answers = Answers.objects.filter(ans__in=[exercise])
+                serialized_answers = []
+                for answer in answers:
+                    serialized_answers.append({
+                        'id': answer.id,
+                        'name': answer.name
+                    })
+                serialized_exercises.append({
+                    'id': exercise.id,
+                    'name': exercise.name,
+                    'answers': serialized_answers
+                })
+            serialized_tests.append({
+                'id': test.id,
+                'title': test.title,
+                'exercises': serialized_exercises
+            })
+        return serialized_tests

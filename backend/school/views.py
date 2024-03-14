@@ -22,3 +22,6 @@ def answer(request, *args, **kwargs):
     answer = Answers.objects.all()
     serializer = answersSerializer(answer, many = True)
     return Response(serializer.data)
+
+
+

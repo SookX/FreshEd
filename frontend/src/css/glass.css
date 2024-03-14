@@ -12,36 +12,55 @@
     position: relative;
     width: 300px;
     height: 200px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.glassmorphism-container {
+    position: relative;
+    /* width:280px; */
+    /* height:400px; */
+    /* box-shadow: 20px 20px 50px rgba(0,0,0,0.5); */
+    border-radius: 15px;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    transform-style: preserve-3d;
+    transform: perspective(10px)
 }
 
 .glassmorphism-div {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
     pointer-events: none;
+    border-radius: 15px;
+    backdrop-filter: blur(1100px);
+    overflow: hidden;
 }
 
 .color-overlay {
-    position: absolute;
-    width: 50px;
-    height: 50px;
+    position: relative;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
 
     background-color: transparent;
 
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0);
+    /* box-shadow: 0 0 20px rgba(255, 0, 0, 0); */
 
     pointer-events: none;
-    transition: opacity 0.5s ease, box-shadow 0.5s ease;
+    /* transition: opacity 0.5s ease, box-shadow 0.5s ease; */
     /* Add opacity to transition */
 }
 
 .glassmorphism-container:hover .color-overlay {
-    opacity: 0.8;
-    background-image: radial-gradient(circle, rgba(255, 0, 0, 0.675392670157068) 0%, rgba(255, 50, 50, 0.5636998254799301) 51%, rgba(255, 70, 70, 0.49389179755671897) 100%);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
-
+    background-image: radial-gradient(circle, rgba(255, 0, 0, 0.299) 0%, rgba(255, 50, 50, 0.5636998254799301) 51%, rgba(255, 70, 70, 0.49389179755671897) 100%);
+    box-shadow: 0 0 70px rgba(255, 0, 0, 0.8);
+    filter: blur(100px);
 }

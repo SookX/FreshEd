@@ -50,7 +50,7 @@ const Login = () => {
 
     return (
         <section  className="section-account">
-            <Glass classes='bg-trdt'>
+            <Glass classes='account-container'>
             {/* <div className="account-container"> */}
                 <div className="account-text-box">
                     <h2 className="account-heading">Log In to Your Account</h2>

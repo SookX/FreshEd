@@ -42,7 +42,7 @@ const Register = () => {
 
     return (
         <section className="section-account">
-            <Glass classes="account-container">
+            <Glass classes="account-container green">
                 <div className="account-text-box">
                     <h2 className="account-heading">Register An Account</h2>
                 </div>

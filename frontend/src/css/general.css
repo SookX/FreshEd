@@ -4,6 +4,7 @@
     /* --bg : #171a45; BLUE */
     /* --bg: #17001c; PURPLE */
     /* --bg: #060e07; */
+    --bg-tint-1: #242e36;
     --bg: #0c1720;
     --bg-shade-1: #081016;
 
@@ -82,12 +83,6 @@ html {
     box-shadow: 0 0 1.2rem var(--blue), inset 0 0 1.2rem var(--blue);
     border: solid 2px var(--blue-tint-1);
 } */
-
-.green {
-    box-shadow: 0 0 1.2rem var(--green), inset 0 0 1.2rem var(--green);
-    border: solid 2px var(--green-tint-1);
-    color: var(--green-tint-1);
-}
 
 .green2 {
     border: solid 2px var(--green2);

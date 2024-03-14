@@ -7,6 +7,10 @@ const DataProvider = ({ children }) => {
     // NAVIGATION
     const navigate = useNavigate()
 
+    // NAVBAR
+    const [sticky, setSticky] = useState(false)
+
+
     // LOGIN SYSTEM
     const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem('loggedIn')) || false)
 
@@ -16,7 +20,7 @@ const DataProvider = ({ children }) => {
 
     return (
         <DataContext.Provider value={{
-            loggedIn, setLoggedIn, navigate
+            loggedIn, setLoggedIn, navigate, sticky, setSticky
         }}>
             {children}
         </DataContext.Provider>

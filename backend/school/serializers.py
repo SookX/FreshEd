@@ -9,9 +9,9 @@ class testSerializer(serializers.ModelSerializer):
 class answersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answers
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'ans']
 
 class exerciseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exercise
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'question']

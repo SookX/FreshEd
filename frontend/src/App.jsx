@@ -10,6 +10,8 @@ import Dashboard2 from "./screens/dashboard/Dashboard2"
 import Test from "./screens/Test"
 import Examples from "./components/Examples"
 import MarkBook from "./screens/dashboard/MarkBook"
+import Examples from "./screens/Examples"
+
 
 function App() {
   return (
@@ -30,7 +32,7 @@ function App() {
             <Route path="test" element={<Dashboard2 />} />
           </Route>
 
-          <Route path="/test" element={<Test />} />
+          <Route path="/test" element={<Examples />} />
         </Routes>
       </DataProvider>
 

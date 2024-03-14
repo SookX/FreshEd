@@ -1,17 +1,17 @@
-.section-balala {
+/* .section-balala { */
     /* background-image: url("../img/bacgroundimage.jpg"); */
-    background-color: var(--bg);
+    /* background-color: var(--bg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     min-height: 100vh;
     padding: 12.8rem 0 15rem 0;
-}
+} */
 
 .glassmorphism-container {
     position: relative;
-    width: 300px;
-    height: 200px;
+    /* width: 70rem; */
+    /* height: 40rem; */
     border-radius: 15px;
     backdrop-filter: blur(10px);
 }

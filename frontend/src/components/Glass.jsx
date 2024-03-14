@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import VanillaTilt from 'vanilla-tilt';
 
-const Glass = ({ children, classes }) => {
+const Glass = ({ children, classes='' }) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const handleMouseMove = (e) => {

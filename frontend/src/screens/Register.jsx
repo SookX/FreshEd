@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import Glass from "../components/Glass"
 
 const Register = () => {
     const [email, setEmail] = useState('')
@@ -40,51 +41,61 @@ const Register = () => {
     }
 
     return (
-        <form onSubmit={(e) => handleSubmit(e)}>
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
+        <section className="section-account">
+            <Glass classes="account-container">
+                <div className="account-text-box">
+                    <h2 className="account-heading">Register An Account</h2>
+                </div>
+                
+                <form onSubmit={(e) => handleSubmit(e)} className="form-account">
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
-            <input
-                type="text"
-                placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-            />
+                    <input
+                        type="text"
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                    />
 
-            <input
-                type="text"
-                placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-            />
+                    <input
+                        type="text"
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                    />
 
-            <label htmlFor="role">I am a:</label>
+                    <div className="account-select">
+                        <label htmlFor="role">I am a:</label>
 
-            <select value={role} onChange={(e) => setRole(e.target.value)} id="role">
-                <option value={0}>Student</option>
-                <option value={1}>Teacher</option>
-            </select>
+                        <select value={role} onChange={(e) => setRole(e.target.value)} id="role">
+                            <option value={0}>Student</option>
+                            <option value={1}>Teacher</option>
+                        </select>
+                    </div>
 
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
-            <input
-                type="password"
-                placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-            />
+                    <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
 
-            <button type="submit">Register</button>
-        </form>
+                    <button type="submit" className="btn">Register</button>
+                </form>
+            </Glass>
+        </section>
     )
 }
 

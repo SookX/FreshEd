@@ -43,12 +43,18 @@
 
     /* --orange: #f16641;
     --orange-tint-1: #f9c2b3; */
+
+    --blue: #008efd;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
 }
 
 html {

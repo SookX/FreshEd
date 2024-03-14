@@ -1,6 +1,11 @@
 from django.urls import path 
-from .views import combined_data
+from .views import test, exercise, answer
+from . import views
 
 urlpatterns = [
-    path('api/combined/', combined_data, name='combined_data'),
+    path('api/test/', test, name = 'test'),
+    path('api/exercise/', exercise, name = 'exercise'),
+    path('api/answer/', answer, name = 'answer'),
+    # -------------------------------------------
+    path('addSchool/', views.addSchool)
 ]

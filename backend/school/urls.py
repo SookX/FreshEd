@@ -1,8 +1,6 @@
 from django.urls import path 
-from .views import test, exercise, answer
+from .views import combined_data
 
 urlpatterns = [
-    path('api/test/', test, name = 'test'),
-    path('api/exercise/', exercise, name = 'exercise'),
-    path('api/answer/', answer, name = 'answer'),
+    path('api/combined/', combined_data, name='combined_data'),
 ]

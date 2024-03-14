@@ -30,22 +30,24 @@ const Sidebar = () => {
     }
 
     return (
-        <aside className="dashboard-sidebar">
-            
-            <div className="sidebar-personal-info">
-                <p className="sidebar-class">{accData.class} class</p>
-                <p className="sidebar-name">{accData.first_name} {accData.last_name}</p>
-            </div>
+        <div className="dashboard-sidebar-container">
+            <aside className="dashboard-sidebar">
+                
+                <div className="sidebar-personal-info">
+                    <p className="sidebar-class">{accData.class} class</p>
+                    <p className="sidebar-name">{accData.first_name} {accData.last_name}</p>
+                </div>
 
-            <nav className="sidebar-nav">
-                <ul className="sidebar-nav-links">
-                    <li><Link className="sidebar-nav-link">Markbook</Link></li>
-                    <li><Link className="sidebar-nav-link">My Learning</Link></li>
-                    <li><Link className="sidebar-nav-link">Assignments</Link></li>
-                </ul>
-            </nav>
+                <nav className="sidebar-nav">
+                    <ul className="sidebar-nav-links">
+                        <li><Link to='/dashboard' className="sidebar-nav-link">Markbook</Link></li>
+                        <li><Link className="sidebar-nav-link">My Learning</Link></li>
+                        <li><Link className="sidebar-nav-link">Assignments</Link></li>
+                    </ul>
+                </nav>
 
-        </aside>
+            </aside>
+        </div>
     )
 }
 

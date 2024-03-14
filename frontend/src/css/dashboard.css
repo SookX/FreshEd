@@ -7,13 +7,17 @@
     grid-template-columns: 24rem auto;
 }
 
-.dashboard-sidebar {
+.dashboard-sidebar-container {
     background-color: var(--bg-tint-1);
     padding: 12.8rem 3.2rem;
     font-size: 2.4rem;
     /* color: var(--green-tint-2); */
     color: white;
     box-shadow: 0 0 1.2rem var(--bg-tint-1);
+}
+
+.dashboard-sidebar {
+    position: fixed;
 }
 
 

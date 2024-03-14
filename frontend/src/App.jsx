@@ -7,8 +7,6 @@ import Header from "./screens/Header"
 import Glass from "./components/Glass"
 import Dashboard from "./screens/dashboard/Dashboard"
 import Dashboard2 from "./screens/dashboard/Dashboard2"
-import Test from "./screens/Test"
-import Examples from "./components/Examples"
 import MarkBook from "./screens/dashboard/MarkBook"
 import Examples from "./screens/Examples"
 
@@ -20,6 +18,7 @@ function App() {
       <div className="purple test">PURPLE</div> */}
       <DataProvider>
         <Header />
+
 
         <Routes>
           <Route path="/" element={<Home />} />

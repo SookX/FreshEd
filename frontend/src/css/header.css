@@ -101,7 +101,7 @@
 
     width: 20rem;
 
-    border: solid 2px var(--green2);
+    border: solid 2px var(--purple);
     border-radius: 10px;
     background-color: var(--bg-shade-1);
 
@@ -117,6 +117,6 @@
 
 .dropdown-link:link,
 .dropdown-link:visited {
-    color: var(--green2);
+    color: var(--purple);
     text-decoration: none;
 }

@@ -70,25 +70,28 @@
 
 .glassmorphism-container:hover .color-overlay {
     background-image: radial-gradient(circle, rgba(255, 0, 0, 0.299) 0%, rgba(255, 50, 50, 0.5636998254799301) 51%, rgba(255, 70, 70, 0.49389179755671897) 100%);
-    box-shadow: -40px -40px 70px red;
+    box-shadow: -40px -40px 2rem red;
     filter: blur(100px);
 }
 
 .glassmorphism-container.green:hover .color-overlay {
+    opacity: 0.4;
     background: var(--green);
-    box-shadow: -40px -40px 70px var(--green);
+    box-shadow: -100px -100px 3px var(--green);
     filter: blur(100px);
 }
 
 .glassmorphism-container.purple:hover .color-overlay {
+    opacity: 0.4;
     background: var(--purple);
-    box-shadow: -40px -40px 70px var(--purple);
+    box-shadow: -100px -100px 70px var(--purple);
     filter: blur(100px);
 }
 
 .glassmorphism-container.blue:hover .color-overlay {
+    opacity: 0.4;
     background: var(--blue);
-    box-shadow: -40px -40px 70px var(--blue);
+    box-shadow: -100px -100px 70px var(--blue);
     filter: blur(100px);
 }
 

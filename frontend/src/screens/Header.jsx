@@ -6,7 +6,7 @@ import { DataContext } from '../context/DataContext'
 import pfp from '../img/pfp.png'
 
 const Header = () => {
-    const { loggedIn, setLoggedIn } = useContext(DataContext)
+    const { loggedIn, setLoggedIn, sticky, setSticky } = useContext(DataContext)
 
 
     // DROPDOWN
@@ -28,7 +28,7 @@ const Header = () => {
 
 
     // STICKY
-    const [sticky, setSticky] = useState(false)
+    // const [sticky, setSticky] = useState(false)
 
     const handleScroll = () => {
         if(!sticky && window.scrollY > 50) setSticky(true)

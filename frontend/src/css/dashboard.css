@@ -1,0 +1,45 @@
+.section-dashboard {
+    /* padding: 12.8rem 0 9.6rem 0; */
+
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 24rem auto;
+    align-items: stretch;
+}
+
+.dashboard-sidebar {
+    background-color: var(--bg-tint-1);
+    padding: 12.8rem 3.2rem;
+    font-size: 2.4rem;
+    /* color: var(--green-tint-2); */
+    color: white;
+    box-shadow: 0 0 1.2rem var(--bg-tint-1);
+}
+
+
+.sidebar-personal-info {
+    padding-bottom: 1.2rem;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.2);
+    margin-bottom: 2.4rem;
+}
+
+.sidebar-class {
+    font-size: 1.4rem;
+    line-height: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    color: var(--green-tint-1);
+}
+
+.sidebar-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.sidebar-nav-link {
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,30 @@
+.assignments-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* background-color: antiquewhite; */
+    min-height: 100vh;
+    padding-top: 12.8rem;
+    padding-left: 14rem;
+}
+
+.box {
+    /* background-color: aqua; */
+    height: 25rem;
+    width: 40rem;
+    margin-top: 4rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.title-assignments {
+    font-size: 4.2rem;
+    /* padding-left: 3rem; */
+    padding-top: 1.3rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-assignments {
+    font-size: 2.4rem;
+    padding-top: 1.3rem;
+}

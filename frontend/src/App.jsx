@@ -9,6 +9,7 @@ import Dashboard from "./screens/dashboard/Dashboard"
 import DashboardMain from "./screens/dashboard/DashboardMain"
 import Dashboard2 from "./screens/dashboard/Dashboard2"
 import Examples from "./screens/Examples"
+import Tests from "./screens/Tests"
 
 
 function App() {
@@ -28,9 +29,11 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<DashboardMain />} />
             <Route path="test" element={<Dashboard2 />} />
+            <Route path="assignments" element={<Tests />} />
           </Route>
 
           <Route path="/test" element={<Examples />} />
+
         </Routes>
       </DataProvider>
 

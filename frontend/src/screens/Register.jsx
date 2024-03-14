@@ -69,12 +69,14 @@ const Register = () => {
                         onChange={(e) => setLastName(e.target.value)}
                     />
 
-                    <label htmlFor="role">I am a:</label>
+                    <div className="account-select">
+                        <label htmlFor="role">I am a:</label>
 
-                    <select value={role} onChange={(e) => setRole(e.target.value)} id="role">
-                        <option value={0}>Student</option>
-                        <option value={1}>Teacher</option>
-                    </select>
+                        <select value={role} onChange={(e) => setRole(e.target.value)} id="role">
+                            <option value={0}>Student</option>
+                            <option value={1}>Teacher</option>
+                        </select>
+                    </div>
 
                     <input
                         type="password"
@@ -90,7 +92,7 @@ const Register = () => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
-                    <button type="submit">Register</button>
+                    <button type="submit" className="btn">Register</button>
                 </form>
             </Glass>
         </section>

@@ -5,6 +5,10 @@
     /* --bg: #17001c; PURPLE */
     /* --bg: #060e07; */
     --bg: #0c1720;
+    --bg-shade-1: #081016;
+
+    --main-gradient: linear-gradient(150deg, rgba(4, 170, 107, 1) 0%, rgba(62, 7, 156, 1) 51%, rgba(214, 0, 255, 1) 100%);
+    /* --main-gradient: linear-gradient(150deg, rgba(4, 170, 107, 1) 0%, rgba(62, 7, 156, 1) 51%); */
 
     /* --pink: #FF10F0;
     --pink-tint-1: #ff58f5;
@@ -20,8 +24,9 @@
     --green-tint-1: #89b992; */
 
     /* W3 SCHOOLS */
+    --green-shade-1: #025536;
     --green: #04aa6b;
-    --green-tint-1: #9dc5a4;
+    --green-tint-1: #68cca6;
 
     --green2: #53D16E;
     --green2-tint-1: #98e3a8;
@@ -34,6 +39,7 @@
     --purple-tint-1: #79518a; */
 
     --purple: #D600FF;
+    --purple-tint-1: #e666ff;
 
     /* --orange: #f16641;
     --orange-tint-1: #f9c2b3; */

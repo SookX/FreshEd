@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import axios from 'axios'
 import { DataContext } from "../context/DataContext";
 
+import '../css/account.css'
+
 const Login = () => {
     const { loggedIn, setLoggedIn, navigate } = useContext(DataContext)
 
@@ -43,7 +45,7 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e)} className="section-account">
             <input
                 type="email" 
                 placeholder="Email"

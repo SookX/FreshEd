@@ -11,8 +11,8 @@ const DataProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem('loggedIn')) || false)
 
     useEffect(() => {
-        // return () => localStorage.removeItem('accData')
-    }, [])
+        localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
+    }, [loggedIn])
 
     return (
         <DataContext.Provider value={{

@@ -23,7 +23,7 @@
     margin-bottom: 1rem;
     font-weight: 600;
     letter-spacing: 1.5px;
-    background: 3px linear-gradient(150deg, rgba(4, 170, 107, 1) 0%, rgba(62, 7, 156, 1) 51%, rgba(214, 0, 255, 1) 100%);
+    background: 3px var(--main-gradient);
     -webkit-background-clip: text;
     -webkit-text-stroke: 0.5rem transparent;
     color: var(--bg);

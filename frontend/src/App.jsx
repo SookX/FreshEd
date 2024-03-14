@@ -8,8 +8,8 @@ import Glass from "./components/Glass"
 import Dashboard from "./screens/dashboard/Dashboard"
 import DashboardMain from "./screens/dashboard/DashboardMain"
 import Dashboard2 from "./screens/dashboard/Dashboard2"
-import Test from "./screens/Test"
-import Examples from "./components/Examples"
+import Examples from "./screens/Examples"
+
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
             <Route path="test" element={<Dashboard2 />} />
           </Route>
 
-          <Route path="/test" element={<Test />} />
+          <Route path="/test" element={<Examples />} />
         </Routes>
       </DataProvider>
 

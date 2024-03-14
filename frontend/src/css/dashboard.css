@@ -5,7 +5,6 @@
 
     display: grid;
     grid-template-columns: 24rem auto;
-    align-items: stretch;
 }
 
 .dashboard-sidebar {
@@ -42,4 +41,15 @@
 .sidebar-nav-link {
     text-decoration: none;
     color: inherit;
+}
+
+
+
+
+/* MARKBOOK */
+.section-markbook {
+    padding: 12.8rem 4.8rem 9.6rem 4.8rem;
+    background-color: aqua;
+    min-height: 100vh;
+    overflow: auto;
 }

@@ -26,10 +26,12 @@ const Glass = () => {
         <section className="section-balala">
             <div className="glassmorphism-container" onMouseMove={handleMouseMove}>
                 <div className="glassmorphism-div" >
+                    <h1>Hello</h1>
                     <div className="color-overlay" style={{
                         left: mousePosition.x + 'px',
                         top: mousePosition.y + 'px',
                     }} />
+
                 </div>
             </div>
         </section >

@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './css/general.css'
 import './css/home.css'
 import './css/glass.css'
+import './css/examples.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

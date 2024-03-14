@@ -5,6 +5,8 @@ import DataProvider from "./context/DataContext"
 import Home from "./screens/Home"
 import Header from "./screens/Header"
 import Glass from "./components/Glass"
+import Test from "./screens/Test"
+import Examples from "./components/Examples"
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/glass" element={<Glass />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </DataProvider>
 

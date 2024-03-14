@@ -45,6 +45,7 @@
     --orange-tint-1: #f9c2b3; */
 
     --blue: #008efd;
+    --blue-tint-1: #769cbc;
 }
 
 * {
@@ -83,11 +84,11 @@ html {
     border: solid 2px var(--blue-tint-1);
 } */
 
-.green {
+/* .green {
     box-shadow: 0 0 1.2rem var(--green), inset 0 0 1.2rem var(--green);
     border: solid 2px var(--green-tint-1);
     color: var(--green-tint-1);
-}
+} */
 
 .green2 {
     border: solid 2px var(--green2);

@@ -1,0 +1,83 @@
+.main-test {
+    padding-top: 12.8rem;
+}
+
+.heading-test {
+    font-size: 10rem;
+}
+
+.test-container {
+    width: 75%;
+    height: auto;
+    background-color: rgb(47, 90, 127, 0.25);
+    /* opacity: 0.4; */
+    border-radius: 15px;
+    margin: 0 auto;
+    padding-left: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.question {
+    font-size: 3.6rem;
+    opacity: 1;
+    margin-top: 3rem;
+}
+
+.answers {
+    /* background-color: aqua; */
+    height: auto;
+    width: 100rem;
+    padding-top: 1.3rem;
+}
+
+.answer {
+    list-style: none;
+    font-size: 2.4rem;
+    padding-left: 3rem;
+    padding-right: 1rem;
+    /* background-color: khaki; */
+}
+
+.answer input {
+    /* background-color: blueviolet; */
+    border: none;
+
+}
+
+.answer textarea {
+    background-color: var(--blue-tint-1);
+    border: none;
+    height: 5rem;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 2.4rem;
+    font-family: inherit;
+
+}
+
+
+.choose {
+    padding-left: 1rem;
+
+}
+
+.radio-btn {
+    width: 20px;
+    height: 20px;
+    border: 3px solid green;
+
+    position: relative;
+}
+
+.radio-btn:checked::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    z-index: 99999;
+    background-color: var(--blue-tint-1);
+}

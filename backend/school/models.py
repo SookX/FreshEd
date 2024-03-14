@@ -46,8 +46,9 @@ class Grade(models.Model):
     
 class Teacher(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(UserAccount, on_delete=models.CASCADE)
-    classes = models.ManyToManyField('Class', related_name='classes')
+    first_name = models.CharField(max_length=100, default='first')
+    last_name = models.CharField(max_length=100 , default='last')
+    classes = models.ManyToManyField('Class', related_name='teachers')
 
     def __str__(self):
         return self.name

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "school",
     'authenticate',
     'user_profile',
+    'architectures'
 
 ]
 
@@ -155,3 +156,4 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 AUTH_USER_MODEL = 'user_profile.UserAccount'
+

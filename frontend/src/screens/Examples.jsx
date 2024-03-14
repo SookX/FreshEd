@@ -4,7 +4,8 @@ const Examples = () => {
 
     const obj =
     {
-        "heading": "Bulgaria",
+
+        "title": "Bulgaria",
         "possibleQuestions": [
             {
                 "id": 1,
@@ -28,7 +29,7 @@ const Examples = () => {
                     ]
             },
             {
-                "id": 1,
+                "id": 2,
                 "question": "When was Bulgaria founded?",
                 "option": 1,
                 "possibleAnswers":
@@ -49,8 +50,8 @@ const Examples = () => {
     return (
         <section className="main-test">
             <div className="test-container">
-                <h1 className="heading-test">{obj.heading}</h1>
-                <br />
+                <h1 className="heading-test">{obj.title}</h1>
+                <br /> {/* br-to na Vasi Sveej */}
                 {obj.possibleQuestions.map((q, i) => (
                     <Fragment key={i}>
                         <div className="testsheet">
@@ -82,3 +83,5 @@ const Examples = () => {
 }
 
 export default Examples;
+
+

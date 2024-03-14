@@ -1,0 +1,123 @@
+from nltk.corpus import stopwords
+import nltk
+from sklearn.feature_extraction.text import TfidfVectorizer
+from transformers import T5ForConditionalGeneration, T5Tokenizer
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
+import openai
+import numpy as np
+import torch
+import dotenv
+import os
+
+
+nltk.download('punkt')
+nltk.download('stopwords')
+
+featurizer = TfidfVectorizer(
+    stop_words=stopwords.words('english'),
+    norm='l1',
+)
+
+def get_sentence_score(tfidf_row):
+  x = tfidf_row[tfidf_row != 0]
+  return x.mean()
+
+
+model_name = "valhalla/t5-base-e2e-qg"
+tokenizer = T5Tokenizer.from_pretrained(model_name)
+model = T5ForConditionalGeneration.from_pretrained(model_name)
+
+model_name = "deepset/roberta-base-squad2"
+
+nlp = pipeline('question-answering', model=model_name, tokenizer=model_name)
+
+path_to_env = '../../backend/.env'
+dotenv.load_dotenv(path_to_env)
+openai.api_key = os.getenv('OPENAI_API_KEY')
+
+print(openai.api_key)
+def answers(text, num_of_questions, num_of_answers):
+  sents = nltk.sent_tokenize(text)
+
+  X = featurizer.fit_transform(sents)
+  
+
+  scores = np.zeros(len(sents))
+  test = []
+  for i in range(len(sents)):
+    score = get_sentence_score(X[i,:])
+    scores[i] = score
+
+  sort_idx = np.argsort(-scores)
+
+  for i in sort_idx[:num_of_questions]:
+
+    curr = {}
+
+    input_ids = tokenizer.encode(sents[i], return_tensors="pt")
+    output = model.generate(input_ids, max_length=32, num_return_sequences=1, early_stopping=True)
+    generated_question = tokenizer.decode(output[0], skip_special_tokens=True).split('<sep>')[0]
+    curr['question'] = generated_question
+
+    
+
+    QA_input = {
+        'question': generated_question,
+        'context': text
+    }
+    res = nlp(QA_input)
+    curr['answer'] = res['answer']
+    prompt = f"Question: {generated_question}, Generate {num_of_answers - 1} wrong answers, without the real one ({res['answer']}) ( only the answer) \nIn this format 1.Wrong answer, 2.Wrong answer, etc. "
+    print(prompt)
+    response = openai.ChatCompletion.create(
+      model="gpt-3.5-turbo-0613",
+      messages=[{"role": "system", "content": prompt
+                 }]
+    )
+
+    generated_text = response['choices'][0]['message']['content']
+    generated_text = generated_text.split('\n')
+    
+    seqs = []
+    for seq in generated_text[:num_of_answers]: 
+        print(seq)
+        seq = seq.split('.')[1]
+        seqs.append(seq)
+    curr['wrong'] = seqs
+    test.append(curr)
+  return test
+
+    
+
+      
+    #print(generated_text)
+    #print("Generated text: ", texts)
+    #print(generated_question + res['answer'] )
+
+
+text = """
+JavaScript was initially created to “make web pages alive”.
+
+The programs in this language are called scripts. They can be written right in a web page’s HTML and run automatically as the page loads.
+
+Scripts are provided and executed as plain text. They don’t need special preparation or compilation to run.
+
+In this aspect, JavaScript is very different from another language called Java.
+
+Why is it called JavaScript?
+When JavaScript was created, it initially had another name: “LiveScript”. But Java was very popular at that time, so it was decided that positioning a new language as a “younger brother” of Java would help.
+
+But as it evolved, JavaScript became a fully independent language with its own specification called ECMAScript, and now it has no relation to Java at all.
+
+Today, JavaScript can execute not only in the browser, but also on the server, or actually on any device that has a special program called the JavaScript engine.
+
+The browser has an embedded engine sometimes called a “JavaScript virtual machine”.
+
+Different engines have different “codenames”. For example:
+
+V8 – in Chrome, Opera and Edge.
+SpiderMonkey – in Firefox.
+…There are other codenames like “Chakra” for IE, “JavaScriptCore”, “Nitro” and “SquirrelFish” for Safari, etc.
+The terms above are good to remember because they are used in developer articles on the internet. We’ll use them too. For instance, if “a feature X is supported by V8”, then it probably works in Chrome, Opera and Edge.
+"""
+print(answers(text, 3, 4))

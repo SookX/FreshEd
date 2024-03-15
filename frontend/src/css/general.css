@@ -12,6 +12,15 @@
     --main-gradient: linear-gradient(150deg, rgba(4, 170, 107, 1) 0%, rgba(62, 7, 156, 1) 51%, rgba(214, 0, 255, 1) 100%);
     /* --main-gradient: linear-gradient(150deg, rgba(4, 170, 107, 1) 0%, rgba(62, 7, 156, 1) 51%); */
 
+    --red: rgb(218, 51, 51);
+    /* --red: rgba(214, 0, 255, 1); */
+
+    --orange: #f16641;
+    /* --orange: rgba(62, 7, 156, 1); */
+
+    --yellow: rgb(255, 195, 30);
+    /* --yellow: #008efd; */
+
     /* W3 SCHOOLS */
     --green-shade-1: #025536;
     --green: #04aa6b;

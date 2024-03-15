@@ -78,13 +78,14 @@ html {
     color: var(--green2);
 }
 
-.purple {
+/* .purple {
     /* box-shadow: 0 0 1.2rem var(--purple), inset 0 0 1.2rem var(--purple); */
-    border: solid 2px var(--purple);
-    color: var(--purple);
-    /* border: solid 2px white; */
+border: solid 2px var(--purple);
+color: var(--purple);
+/* border: solid 2px white; */
 }
 
+*/
 /* .orange {
     box-shadow: 0 0 1.2rem var(--orange), inset 0 0 1.2rem var(--orange);
     border: solid 2px var(--orange-tint-1);

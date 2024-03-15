@@ -12,6 +12,9 @@ def isUser(request, *args, **kwargs):
     body = request.body
     data = json.loads(body)
     email = data['email']
+    first_name = data['first_name']
+    last_name = data['last_name']
+    role = data['role']
     password = data['password']
     try:
         user = UserAccount.objects.get(email=email)
@@ -28,10 +31,11 @@ def getUserCredentials(request, *args, **kwargs):
     if request.method == "GET":
         id = int(request.GET.get('id'))
         try:
-            user = UserAccount.objects.filter(id = id).first()
+            user = UserAccount.objects.filter(id=id).first()
             user_data = {
                 "email": user.email,
-                "username": user.username,
+                "first_name": user.first_name,
+                "last_name": user.last_name,
                 "profile_picture": None
             }
             if user.profile_picture:
@@ -40,9 +44,9 @@ def getUserCredentials(request, *args, **kwargs):
                     encoded_string = b64encode(image_file.read()).decode('utf-8')
                     data_uri = f"data:{content_type};base64,{encoded_string}"
                     user_data["profile_picture"] = data_uri
-            return Response(data = {"data": user_data}, status=200)
+            return Response(data={"data": user_data}, status=200)
         except:
-            return Response(data = {"Message": "There is no such account"}, status=404)
+            return Response(data={"Message": "There is no such account"}, status=404)
 
 
 @api_view(['PUT', 'POST', 'GET'])
@@ -54,19 +58,19 @@ def saveChanges(request, *args, **kwargs):
             new_profile_picture_blob = request.FILES.get('newProfilePicture')
             message = {}
 
-            user = UserAccount.objects.filter(id = user_id).first()
+            user = UserAccount.objects.filter(id=user_id).first()
             if new_profile_picture_blob:
                 if user.profile_picture != new_profile_picture_blob:
                     user.profile_picture.delete(save=False)
                     user.profile_picture = new_profile_picture_blob
                     user.save()
-               
-                message['image'] = "Image saved successfully" 
+
+                message['image'] = "Image saved successfully"
             if username:
                 user.username = username
                 user.save()
                 message['username'] = "Username saved successfully"
 
-            return Response(data = message, status=201)
+            return Response(data=message, status=201)
         except:
             return Response(status=404)

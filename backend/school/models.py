@@ -1,6 +1,4 @@
 from django.db import models
-from user_profile.models import UserAccount
-
 #FIX THIS and add homework and exams
 
 class Grade(models.Model):
@@ -20,11 +18,6 @@ class Grade(models.Model):
         ('D', 'D'),
         ('F', 'F'),
     ]
-    TIME_PERIOD_CHOICES = [
-        ('current', 'Current'),
-        ('semester', 'Semester'),
-        ('final', 'Final'),
-    ]
 
     type = models.CharField(
         max_length=2,
@@ -34,9 +27,9 @@ class Grade(models.Model):
     
     comment = models.TextField(max_length=100)
     grade = models.CharField(max_length=1, choices=GRADE_CHOICES)
-    time_period = models.CharField(max_length=10, choices=TIME_PERIOD_CHOICES)
     date = models.DateField(auto_now=True)
     subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
+    holder = models.ForeignKey('Student', on_delete=models.CASCADE, default = '', null = False)
     
     
     def __str__(self):
@@ -84,8 +77,6 @@ class Teacher(models.Model):
     subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
     school = models.ForeignKey('School', on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.name
     
 class Subject(models.Model):
     id = models.AutoField(primary_key=True)

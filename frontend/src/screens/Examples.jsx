@@ -10,7 +10,7 @@ const Examples = ({ teacher = false }) => {
     const [currentTest, setCurrentTest] = useState()
 
     useEffect(() => {
-        console.log('CURRENT TEST')
+        // console.log('CURRENT TEST')
         if(tests) setCurrentTest(tests.find(test => test.id === +id))
     }, [tests, id])
 
@@ -25,19 +25,19 @@ const Examples = ({ teacher = false }) => {
     const socket = new WebSocket('ws://localhost:8080');
 
     socket.addEventListener("open", (event) => {
-        console.log('ws connection has started')
+        // console.log('ws connection has started')
 
         if(teacher) socket.send('teacher-123')
     });
 
-    console.log(teacher)
+    // console.log(teacher)
 
     useEffect(() => {
         if(teacher) {
-            console.log('Teacher view')
+            // console.log('Teacher view')
 
             socket.addEventListener("message", (event) => {
-                console.log(event.data)
+                // console.log(event.data)
             });
 
         }
@@ -76,6 +76,12 @@ const Examples = ({ teacher = false }) => {
                 <p>STUDENT</p>
             }
             <p>{id}</p> */}
+
+            {/* 
+                средна шунка класик 3
+                средна мастър бургер
+            */}
+
             {
                 currentTest &&
                 <div className="test-container">
@@ -115,7 +121,7 @@ const Examples = ({ teacher = false }) => {
                                         {
                                             question.answers.map((ans, k) => (
                                                 <li key={k} className="answer">
-                                                    <input name="q1" type="radio" className="radio-btn" />
+                                                    <input name={`q${i}`} type="radio" className="radio-btn" />
                                                     <span className="choose">{ans.answer}</span>
                                                 </li>
                                             ))

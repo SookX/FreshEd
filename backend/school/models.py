@@ -115,8 +115,8 @@ class Test(models.Model):
 class Exercise(models.Model):
     name = models.TextField(max_length = 1000)
     question = models.ManyToManyField(Test, related_name='question')
-    optionOne = models.BooleanField(default = False)
-    correct_answer = models.TextField(max_length = 1000, default = "")
+    #optionOne = models.BooleanField(default = False) 
+    #correct_answer = models.TextField(max_length = 1000, default = "")
 
     def __str__(self):
         return self.name
@@ -127,6 +127,14 @@ class Answers(models.Model):
 
     def __str__(self):
         return self.name
+    
+class option_state(models.Model):
+    option_s = models.BooleanField(default = False)
+    option_m = models.ManyToManyField(Exercise, related_name = 'option_m')
+
+class correct_answer(models.Model):
+    name = models.TextField(max_length = 1000)
+    correct_ans = models.ManyToManyField(Exercise, related_name='correct_ans')
     
     
 #for later

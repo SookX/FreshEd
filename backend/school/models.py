@@ -29,6 +29,7 @@ class Grade(models.Model):
     grade = models.CharField(max_length=1, choices=GRADE_CHOICES)
     date = models.DateField(auto_now=True)
     subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
+    holder = models.ForeignKey('Student', on_delete=models.CASCADE, default = '', null = False)
     
     
     def __str__(self):

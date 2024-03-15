@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from .validators import image_extension_validator
+
 
 
 def server_icon_upload_path(instance, filename):
@@ -38,8 +40,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=255)
     role = models.BooleanField(default=0)
     is_staff = models.BooleanField(default=False)
-    profile_picture = models.ImageField(upload_to=server_icon_upload_path, blank=True, null=True)
-
+    profile_picture = models.ImageField(upload_to=server_icon_upload_path, blank=True, null=True,default='default.png', validators=[image_extension_validator])
     objects = UserAccountManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'role']

@@ -110,6 +110,6 @@ def addGrade(request, *args, **kwargs):
 
 @api_view(['GET'])
 def testView(request, *args, **kwargs):
-    test = Test.objects.all()
-    serializer = testSerializer(test, many = True)
+    test = Test.objects.first()
+    serializer = testSerializer(instance=test)
     return Response(serializer.data)

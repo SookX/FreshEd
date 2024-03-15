@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Test, Exercise, Answers, option_state
+from .models import Test, Exercise, Answers
 
 class CombinedSerializer(serializers.Serializer):
     tests = serializers.SerializerMethodField()

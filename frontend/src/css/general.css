@@ -34,7 +34,8 @@
     --purple-tint-1: #e666ff;
 
     --blue: #008efd;
-    --blue-tint-2: #1a99fd --blue-tint-1: #769cbc;
+    --blue-tint-2: #1a99fd;
+    --blue-tint-1: #769cbc;
 }
 
 * {

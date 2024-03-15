@@ -21,7 +21,7 @@ const Header = () => {
     document.addEventListener('click', (e) => dropdown ? handleCollapse(e) : null)
 
     useEffect(() => {
-        if(loggedIn) setDropdown(false)
+        if (loggedIn) setDropdown(false)
     }, [loggedIn])
 
 
@@ -31,8 +31,8 @@ const Header = () => {
     // const [sticky, setSticky] = useState(false)
 
     const handleScroll = () => {
-        if(!sticky && window.scrollY > 50) setSticky(true)
-        if(sticky && window.scrollY < 50) setSticky(false)
+        if (!sticky && window.scrollY > 50) setSticky(true)
+        if (sticky && window.scrollY < 50) setSticky(false)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -49,33 +49,34 @@ const Header = () => {
                         <li><Link to='/' className='main-nav-link'>Home</Link></li>
                         <li><Link to='/' className='main-nav-link'>About us</Link></li>
                         <li><Link to='/' className='main-nav-link'>Contact us</Link></li>
+                        <li><Link to='/dashboard' className='main-nav-link'>Dashboard</Link></li>
                     </ul>
                 </nav>
 
                 <nav className='account-nav'>
                     {
                         loggedIn ?
-                        <div className="nav-pfp-container">
-                            <img src={pfp} alt="pfp" className='nav-pfp' onClick={() => setDropdown(!dropdown)}/>
+                            <div className="nav-pfp-container">
+                                <img src={pfp} alt="pfp" className='nav-pfp' onClick={() => setDropdown(!dropdown)} />
 
-                            {
-                                dropdown ?
-                                <nav className='dropdown-nav'>
-                                    <ul>
-                                        <li><Link to='/' className='dropdown-link'>My Profile</Link></li>
-                                        <li><Link to='/' className='dropdown-link'>My Grades</Link></li>
-                                        <li><Link to='/' className='dropdown-link' onClick={() => setLoggedIn(false)}>Log Out</Link></li>
-                                    </ul>
-                                </nav>
-                                :
-                                null
-                            }
-                        </div>
-                        :
-                        <ul className='main-nav-list'>
-                            <li><Link to='/login' className='main-nav-link'>Log In</Link></li>
-                            <li><Link to='/register' className='main-nav-link'>Sign Up</Link></li>
-                        </ul>
+                                {
+                                    dropdown ?
+                                        <nav className='dropdown-nav'>
+                                            <ul>
+                                                <li><Link to='/' className='dropdown-link'>My Profile</Link></li>
+                                                <li><Link to='/' className='dropdown-link'>My Grades</Link></li>
+                                                <li><Link to='/' className='dropdown-link' onClick={() => setLoggedIn(false)}>Log Out</Link></li>
+                                            </ul>
+                                        </nav>
+                                        :
+                                        null
+                                }
+                            </div>
+                            :
+                            <ul className='main-nav-list'>
+                                <li><Link to='/login' className='main-nav-link'>Log In</Link></li>
+                                <li><Link to='/register' className='main-nav-link'>Sign Up</Link></li>
+                            </ul>
                     }
                 </nav>
             </div>

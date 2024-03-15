@@ -30,8 +30,9 @@ const Info = () => {
                 <div className="main-info">
                     <h1>{element.title}</h1>
                     <p>{element.description}</p>
+                    <button className="info-btn" onClick={() => navigate(`/test`)}>Continue with the test</button>
                 </div>
-                <button onClick={() => navigate(`/test`)}>Continue with the test</button>
+
             </div>
         ) : (
             null

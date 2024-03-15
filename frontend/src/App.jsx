@@ -12,6 +12,8 @@ import Examples from "./screens/Examples"
 import Tests from "./screens/Tests"
 import Info from "./screens/Information"
 import MyProfile from "./screens/MyProfile"
+import MyLearning from "./screens/MyLearning"
+import NewGrade from "./screens/NewGrade"
 
 
 function App() {
@@ -34,11 +36,15 @@ function App() {
             <Route path="test" element={<Dashboard />} />
             <Route path="assignments" element={<Tests />} />
             <Route path="myprofile" element={<MyProfile />} />
+            <Route path="mylearning" element={<MyLearning />} />
+            <Route path="newgrade" element={<NewGrade />} />
           </Route>
 
           <Route path="/test/:id" element={<Examples />} />
           <Route path="/test/:id/teacher" element={<Examples teacher={true} />} />
           <Route path="/info/:id" element={<Info />} />
+
+
 
 
         </Routes>

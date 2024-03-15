@@ -59,7 +59,7 @@
 
     background-color: transparent;
 
-    z-index: -1;
+    /* z-index: -1; */
 
     /* box-shadow: 0 0 20px rgba(255, 0, 0, 0); */
 
@@ -75,23 +75,23 @@
 }
 
 .glassmorphism-container.green:hover .color-overlay {
-    opacity: 0.4;
+    opacity: 0.8;
     background: var(--green);
-    box-shadow: -100px -100px 3px var(--green);
+    box-shadow: -100px -100px 100px var(--green);
     filter: blur(100px);
 }
 
 .glassmorphism-container.purple:hover .color-overlay {
-    opacity: 0.4;
+    opacity: 0.8;
     background: var(--purple);
-    box-shadow: -100px -100px 70px var(--purple);
+    box-shadow: -100px -100px 3px var(--purple);
     filter: blur(100px);
 }
 
 .glassmorphism-container.blue:hover .color-overlay {
-    opacity: 0.4;
+    opacity: 0.8;
     background: var(--blue);
-    box-shadow: -100px -100px 70px var(--blue-tint-2);
+    box-shadow: -200px -200px 73px var(--blue-tint-2);
     filter: blur(100px);
 }
 

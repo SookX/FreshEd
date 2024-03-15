@@ -114,9 +114,15 @@ def testView(request, *args, **kwargs):
     serializer = testSerializer(instance=test)
     return Response(serializer.data)
 
-@api_view(['GET'])
+@api_view(['POST', 'GET'])
 def answer_isCorrect(request, *args, **kwargs):
-    id = request.GET.get('id')  
+    if request.method == 'POST':
+        id = request.data.get('id')
+    elif request.method == 'GET':
+        id = request.GET.get('id')
+    else:
+        return Response(status=405)  # 
+    
     try:
         answer = Answers.objects.get(pk=id)
         if answer.is_True:

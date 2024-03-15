@@ -9,11 +9,12 @@
 .main-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     gap: 4.5rem;
-    /* background-color: blue; */
+    /* background-color: aqua; */
     align-items: center;
-    margin-left: 17rem;
-    margin-top: 5rem;
+    /* margin-left: 17rem; */
+    /* margin-top: 5rem; */
 }
 
 .heading {
@@ -41,18 +42,11 @@
     /* background-color: yellowgreen; */
 }
 
-.main-imgbox {
-    grid-column: 2;
-    width: 100rem;
-    height: auto;
-    /* background-color: brown; */
-}
-
 .main-img {
     grid-column: 2;
     width: 75%;
-    display: block;
-    margin: 0 auto;
+    /* display: block; */
 
     filter: saturate(50%);
+    filter: brightness(150%);
 }

@@ -3,13 +3,14 @@
 
     min-height: 100vh;
 
-    padding: 12.8rem 0 15rem 0;
+    padding: 9.6rem 0 9.6rem 0;
 }
 
 .main-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
+    align-items: center;
     gap: 4.5rem;
     /* background-color: aqua; */
     align-items: center;
@@ -24,22 +25,23 @@
 .heading {
     /* background-color: aqua; */
     padding-left: 3px;
+    padding-right: 3px;
     font-size: 10rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.4rem;
+    line-height: 1;
     background: 3px var(--main-gradient);
     -webkit-background-clip: text;
     -webkit-text-stroke: 0.5rem transparent;
     color: var(--bg);
-
 }
 
 
 
 .main-text {
     grid-column: 1;
-    font-size: 2rem;
+    font-size: 2.4rem;
     line-height: 1.8;
     /* color: var(--main); */
     margin-bottom: 3.2rem;

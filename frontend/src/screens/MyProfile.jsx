@@ -78,7 +78,7 @@ const MyProfile = () => {
                 </div>
 
                 <div className="btn-container">
-                    <button className="btn" onClick={(e) => handleSubmit(e)}>Save changes</button>
+                    <button className="btn-save" onClick={(e) => handleSubmit(e)}>Save changes</button>
                 </div>
             </div>
         </main >

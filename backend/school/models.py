@@ -3,9 +3,6 @@ from user_profile.models import UserAccount
 
 #FIX THIS and add homework and exams
 
-
-
-
 class Grade(models.Model):
     id = models.AutoField(primary_key=True)
     HOMEWORK = 'HW'
@@ -41,6 +38,7 @@ class Grade(models.Model):
     date = models.DateField(auto_now=True)
     subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
     
+    
     def __str__(self):
         return self.type
     
@@ -59,30 +57,32 @@ class exams(models.Model):
     
 class Student(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
-    Student_Class = models.ForeignKey('Class', on_delete=models.CASCADE, null=True)
     
+    email = models.EmailField(max_length=100)
+    first_name = models.CharField(max_length=100, default='first')
+    last_name = models.CharField(max_length=100 , default='last')
+    school_class = models.ForeignKey('Class', on_delete=models.CASCADE)
+    grades = models.ManyToManyField('Grade', related_name='grades')
     def __str__(self):
         return self.name
     
 class Class(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    class_teacher = models.ForeignKey("Teacher", on_delete=models.CASCADE)
-    students = models.ManyToManyField(Student, related_name='classes')
-    subjects = models.ManyToManyField('Subject', related_name='classes')
-    exams = models.ManyToManyField(exams, related_name='exams')
-    school = models.ForeignKey('School', on_delete=models.CASCADE)  
+    name = models.CharField(max_length=2, default='8A')
+    subjects = models.ManyToManyField('Subject', related_name='subjects')
+    school = models.ForeignKey('School', on_delete=models.CASCADE)
+    
     
     def __str__(self):
         return self.name   
 
 class Teacher(models.Model):
     id = models.AutoField(primary_key=True)
+    email = models.EmailField(max_length=100)
     first_name = models.CharField(max_length=100, default='first')
     last_name = models.CharField(max_length=100 , default='last')
-    classes = models.ManyToManyField('Class', related_name='teachers')
-    subject = models.ManyToManyField('Subject', related_name='teachers')
+    subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
+    school = models.ForeignKey('School', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

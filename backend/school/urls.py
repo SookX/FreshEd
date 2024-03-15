@@ -8,5 +8,6 @@ urlpatterns = [
     path('createTeacher/', createTeacher, name = 'createTeacher'),
     path('createClass/', createClass, name = 'createClass'),
     path('createStudent/', views.createStudent, name = 'createStudent'),
+    path('addGrade/', views.addGrade),
     path('api/combined/', views.combined_data, name='combined_api'),
 ]

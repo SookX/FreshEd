@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Test, Exercise, Answers, option_state
+from .models import Test, Exercise, Answers
 
 class CombinedSerializer(serializers.Serializer):
     tests = serializers.SerializerMethodField()
@@ -21,7 +21,7 @@ class CombinedSerializer(serializers.Serializer):
                     })
 
                 #option = Exercise.optionOne
-                option = option_state.objects.first()
+                option = option_state.objects.filter(option_m=exercise.id).first()
                 if option:
                     option_value = option.option_s
                 else:

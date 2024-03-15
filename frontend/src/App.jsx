@@ -36,7 +36,7 @@ function App() {
             <Route path="myprofile" element={<MyProfile />} />
           </Route>
 
-          <Route path="/test" element={<Examples />} />
+          <Route path="/test/:id" element={<Examples />} />
           <Route path="/info/:id" element={<Info />} />
 
 

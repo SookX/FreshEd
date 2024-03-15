@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Exercise, Test, Answers, Class, Teacher, School, Subject, Student
+from .models import Exercise, Test, Answers, Class, Teacher, School, Subject, Student, Grade
 from .serializers import CombinedSerializer
 import json
 # Create your views here.
@@ -91,10 +91,33 @@ def createStudent(request, *args, **kwargs):
         last_name = data['last_name']
         school_class = data['school_class']
         school_class = Class.objects.get(name = school_class)
+        student_id = data['student_id']
+        student = Student.objects.get(id = student_id)
         try:
-            student = Student(email = email, first_name = first_name, last_name = last_name, school_class = school_class)
+            student = Student(email = email, first_name = first_name, last_name = last_name, school_class = school_class, student = student)
             Student.save(student)
             return Response(data = {"message": "The student was added successfully"}, status=201)
         except:
             return Response(status=400)
 
+
+@api_view(['POST'])
+def addGrade(request, *args, **kwargs):
+    if request.method == "POST":
+        body = request.body
+        data = json.loads(body)
+        type = str(data['type']).upper()
+        comment = data['comment']
+        grade = data['grade']
+        subject = data['subject']
+        subject = Subject.objects.get(name = subject)
+        
+        grade = Grade(type = type, 
+                      comment = comment,
+                      grade = grade,
+                      subject = subject)
+        grade.save()
+        return Response(data = {"message": 
+                                "The grade was successfully added"}, status=201)
+
+        

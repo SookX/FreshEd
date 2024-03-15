@@ -58,7 +58,7 @@ class exams(models.Model):
 class Student(models.Model):
     id = models.AutoField(primary_key=True)
     
-    email = models.EmailField(max_length=100)
+    email = models.EmailField(max_length=100, default = "", null = False)
     first_name = models.CharField(max_length=100, default='first')
     last_name = models.CharField(max_length=100 , default='last')
     school_class = models.ForeignKey('Class', on_delete=models.CASCADE)

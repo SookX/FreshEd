@@ -15,7 +15,7 @@ const Glass = ({ children, classes = '' }) => {
     useEffect(() => {
         VanillaTilt.init(document.querySelectorAll(".glassmorphism-container"), {
             max: 5,
-            speed: 100,
+            speed: 60,
             easing: "cubic-bezier(.03,.05,.05,.05)",
             perspective: 800,
             transition: true

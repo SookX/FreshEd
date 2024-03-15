@@ -1,0 +1,17 @@
+.info-container {
+    min-height: 100vh;
+    background-color: rgb(109, 116, 121, 0.3);
+    padding-top: 12.8rem;
+    /* padding-left: 40.7rem; */
+    /* opacity: 0.2; */
+}
+
+.main-info {
+    height: 40rem;
+    width: 100rem;
+    background-color: aqua;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+
+}

@@ -1,5 +1,8 @@
-import Glass from "../components/Glass";
+
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import Glass from "../components/Glass";
+import Info from "./Information";
 
 const Tests = () => {
 
@@ -57,20 +60,31 @@ const Tests = () => {
     ];
 
 
-    const handleClick = () => {
-
-    }
+    const handleClick = (id) => {
+        // Redirect to the info page with the id as a parameter
+        return <Link to={`/info/${id}`} />;
+    };
 
     return (
         <div className="assignments-container">
-            {obj.map((item, i) => (
-                <Glass key={item.id} classes="box blue" >
-                    <h1 className="title-assignments">{item.title}</h1>
-                    <p className="text-assignments">{item.description}</p>
+            {obj.map((item) => (
+                <Glass key={item.id} classes="box blue" onClick={() => handleClick(item.id)}>
+
+                    <Link className="link-class" to={{
+                        pathname: `/info/${item.id}`,
+                        state: {
+                            name: item.title,
+                            description: item.description
+                        }
+                    }}>
+
+                        <h1 className="title-assignments">{item.title}</h1>
+                        <p className="text-assignments">{item.description}</p>
+                    </Link>
                 </Glass>
             ))}
         </div>
     );
-}
+};
 
-export default Tests;
+export default Tests

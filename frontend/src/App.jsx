@@ -10,6 +10,7 @@ import Dashboard2 from "./screens/dashboard/Dashboard2"
 import MarkBook from "./screens/dashboard/MarkBook"
 import Examples from "./screens/Examples"
 import Tests from "./screens/Tests"
+import Info from "./screens/Information"
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           </Route>
 
           <Route path="/test" element={<Examples />} />
+          <Route path="/info/:id" element={<Info />} />
 
         </Routes>
       </DataProvider>

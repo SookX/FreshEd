@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, NavLink, Outlet } from "react-router-dom"
 
 import '../../css/dashboard.css'
 import { useContext, useEffect } from "react"
@@ -40,10 +40,18 @@ const Sidebar = () => {
 
                 <nav className="sidebar-nav">
                     <ul className="sidebar-nav-links">
-                        <li><Link to="/dashboard" className="sidebar-nav-link">Markbook</Link></li>
-                        <li><Link className="sidebar-nav-link">My Learning</Link></li>
-                        <li><Link to="/dashboard/assignments" className="sidebar-nav-link">Assignments</Link></li>
-                        <li><Link to="/dashboard/myprofile" className="sidebar-nav-link">My Profile</Link></li>
+                        <li>
+                            <NavLink exact to="/dashboard" className="sidebar-nav-link">Markbook</NavLink>
+                        </li>
+                        <li>
+                            <NavLink exact className="sidebar-nav-link">My Learning</NavLink>
+                        </li>
+                        <li>
+                            <NavLink exact to="assignments" className="sidebar-nav-link">Assignments</NavLink>
+                        </li>
+                        <li>
+                            <NavLink exact to="myprofile" className="sidebar-nav-link">My Profile</NavLink>
+                        </li>
                     </ul>
                 </nav>
 

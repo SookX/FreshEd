@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+
 def server_icon_upload_path(instance, filename):
     return f"user/{instance.id}/profile_picutre/{filename}"
 

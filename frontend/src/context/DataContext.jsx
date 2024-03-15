@@ -6,17 +6,17 @@ export const DataContext = createContext({})
 
 const DataProvider = ({ children }) => {
     // AXIOS INTERCEPTORS
-    axios.interceptors.request.use((request) => {
-        console.log('REQUEST')
-        console.log(request)
-        return request
-    })
+    // axios.interceptors.request.use((request) => {
+    //     // console.log('REQUEST')
+    //     // console.log(request)
+    //     return request
+    // })
 
-    axios.interceptors.response.use((response) => {
-        console.log('RESPONSE')
-        console.log(response)
-        return response
-    })
+    // axios.interceptors.response.use((response) => {
+    //     // console.log('RESPONSE')
+    //     // console.log(response)
+    //     return response
+    // })
 
 
     // TESTS
@@ -33,7 +33,7 @@ const DataProvider = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        console.log(tests)
+        // console.log(tests)
     }, [tests])
 
 
@@ -47,15 +47,30 @@ const DataProvider = ({ children }) => {
     // LOGIN SYSTEM
     const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem('loggedIn')) || false)
 
-    useEffect(() => {
-        localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
-    }, [loggedIn])
-
     const fetchAccount = async () => {
         if(loggedIn){
-            const response = await axios.post('', {id: JSON.parse(localStorage.getItem())})
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/authenticate/info/', {id: JSON.parse(localStorage.getItem('accData')).id})
+
+                console.log('ACC DATA')
+                console.log(response)
+            } catch(err) {
+                console.log(err)
+            }
         }
     }
+
+    useEffect(() => {
+        if(loggedIn) {
+            localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
+
+            fetchAccount()
+        }
+    }, [loggedIn])
+
+
+    
+    
 
     const assignments = [
         {

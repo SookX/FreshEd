@@ -26,27 +26,27 @@ def isUser(request, *args, **kwargs):
         return Response(data = {"message": "Wrong password."}, status=404)
     
     
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def getUserCredentials(request, *args, **kwargs):
-    if request.method == "GET":
-        id = int(request.GET.get('id'))
-        try:
-            user = UserAccount.objects.filter(id=id).first()
-            user_data = {
-                "email": user.email,
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "profile_picture": None
-            }
-            if user.profile_picture:
-                content_type, _ = mimetypes.guess_type(user.profile_picture.name)
-                with user.profile_picture.open('rb') as image_file:
-                    encoded_string = b64encode(image_file.read()).decode('utf-8')
-                    data_uri = f"data:{content_type};base64,{encoded_string}"
-                    user_data["profile_picture"] = data_uri
-            return Response(data={"data": user_data}, status=200)
-        except:
-            return Response(data={"Message": "There is no such account"}, status=404)
+    if request.method == "POST":
+        body = request.body
+        data = json.loads(body)
+        id = int(data['id'])
+        user = UserAccount.objects.filter(id=id).first()
+        user_data = {
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "profile_picture": None
+        }
+        if user.profile_picture:
+            content_type, _ = mimetypes.guess_type(user.profile_picture.name)
+            with user.profile_picture.open('rb') as image_file:
+                encoded_string = b64encode(image_file.read()).decode('utf-8')
+                data_uri = f"data:{content_type};base64,{encoded_string}"
+                user_data["profile_picture"] = data_uri
+        return Response(data={"data": user_data}, status=200)
+
 
 
 @api_view(['PUT', 'POST', 'GET'])

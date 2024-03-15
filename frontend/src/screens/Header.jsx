@@ -63,8 +63,8 @@ const Header = () => {
                                     dropdown ?
                                         <nav className='dropdown-nav'>
                                             <ul>
-                                                <li><Link to='/' className='dropdown-link'>My Profile</Link></li>
-                                                <li><Link to='/' className='dropdown-link'>My Grades</Link></li>
+                                                <li><Link to='/dashboard/myprofile' className='dropdown-link'>My Profile</Link></li>
+                                                <li><Link to='/dashboard' className='dropdown-link'>My Grades</Link></li>
                                                 <li><Link to='/' className='dropdown-link' onClick={() => setLoggedIn(false)}>Log Out</Link></li>
                                             </ul>
                                         </nav>

@@ -49,6 +49,7 @@ class Teacher(models.Model):
     first_name = models.CharField(max_length=100, default='first')
     last_name = models.CharField(max_length=100 , default='last')
     classes = models.ManyToManyField('Class', related_name='teachers')
+    subject = models.ManyToManyField('Subject', related_name='teachers')
 
     def __str__(self):
         return self.name
@@ -57,7 +58,6 @@ class Subject(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
-    teachers = models.ManyToManyField(Teacher, related_name='subjects')
     grades = models.ManyToManyField(Grade, related_name='grades')
 
     def __str__(self):
@@ -69,15 +69,6 @@ class exams(models.Model):
     date = models.DateField(auto_now=True)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.name
-    
-class homework(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    due_date = models.DateField()
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    
     def __str__(self):
         return self.name
     
@@ -131,3 +122,16 @@ class Answers(models.Model):
 
     def __str__(self):
         return self.name
+    
+    
+#for later
+
+# class homework(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     name = models.CharField(max_length=100)
+#     due_date = models.DateField()
+#     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    
+#     def __str__(self):
+#         return self.name
+    

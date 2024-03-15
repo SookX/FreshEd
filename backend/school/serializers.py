@@ -49,6 +49,7 @@ class testSerializer(serializers.Serializer):
     def get_tests(self, obj):
         tests = Test.objects.all()
         serialized_tests = []
+        print("TESTS")
         for test in tests:
             exercises = Question.objects.filter(test=test)
             serialized_exercises = []

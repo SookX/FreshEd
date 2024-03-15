@@ -11,6 +11,7 @@ class CombinedSerializer(serializers.Serializer):
             exercises = Exercise.objects.filter(question__in=[test])
             serialized_exercises = []
             for exercise in exercises:
+                #optionOne = Exercise.optionOne
                 answers = Answers.objects.filter(ans__in=[exercise])
                 serialized_answers = []
                 for answer in answers:
@@ -21,6 +22,7 @@ class CombinedSerializer(serializers.Serializer):
                 serialized_exercises.append({
                     'id': exercise.id,
                     'name': exercise.name,
+                    'Option': Exercise.optionOne,
                     'answers': serialized_answers
                 })
             serialized_tests.append({

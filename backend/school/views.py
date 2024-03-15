@@ -36,6 +36,7 @@ def createTeacher(request, *args, **kwargs):
     if request.method == 'POST':
         body = request.body
         data = json.loads(body)
+        email = data['email']
         first_name = data['first_name']
         last_name = data['last_name']
         teacher = Teacher.objects.create(first_name = first_name, last_name = last_name)

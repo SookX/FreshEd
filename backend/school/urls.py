@@ -1,6 +1,7 @@
 from django.urls import path 
-from .views import createClass, createTeacher, combined_data
+from .views import createClass, createTeacher
 from . import views
+from school.views import testView
 
 urlpatterns = [
     path('createSchool/', views.addSchool),
@@ -9,5 +10,5 @@ urlpatterns = [
     path('createClass/', createClass, name = 'createClass'),
     path('createStudent/', views.createStudent, name = 'createStudent'),
     path('addGrade/', views.addGrade),
-    path('api/combined/', views.combined_data, name='combined_api'),
+    path('api/testView/', testView, name = 'testView'),
 ]

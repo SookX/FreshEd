@@ -2,20 +2,11 @@ from django.shortcuts import render
 import json
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Exercise, Test, Answers, Class, Teacher, School, Subject, Student, Grade
-from .serializers import CombinedSerializer
+from .models import Question, Test, Answers, Class, Teacher, School, Subject, Student, Grade
 import json
+from .serializers import testSerializer
 # Create your views here.
 
-@api_view(['GET'])
-def combined_data(request, *args, **kwargs):
-    combined_data = {
-        'tests': Test.objects.all(),
-        'exercises': Exercise.objects.all(),
-        'answers': Answers.objects.all()
-    }
-    serializer = CombinedSerializer(combined_data)
-    return Response(serializer.data)
 
 @api_view(['POST'])
 def addSchool(request, *args, **kwargs):
@@ -61,7 +52,7 @@ def createTeacher(request, *args, **kwargs):
         subject = Subject.objects.get(name = subject)
         try:
             teacher = Teacher(email = email, first_name = first_name, last_name = last_name, subject = subject, school = school)
-            Teacher.save(teacher)
+            teacher.save()
             return Response(data = {"message": "The teacher was added successfully"}, status=201)
         except:
             return Response(status=400)
@@ -91,14 +82,11 @@ def createStudent(request, *args, **kwargs):
         last_name = data['last_name']
         school_class = data['school_class']
         school_class = Class.objects.get(name = school_class)
-        student_id = data['student_id']
-        student = Student.objects.get(id = student_id)
-        try:
-            student = Student(email = email, first_name = first_name, last_name = last_name, school_class = school_class, student = student)
-            Student.save(student)
-            return Response(data = {"message": "The student was added successfully"}, status=201)
-        except:
-            return Response(status=400)
+        
+        student = Student(email = email, first_name = first_name, last_name = last_name, school_class = school_class)
+        student.save()
+        return Response(data = {"message": "The student was added successfully"}, status=201)
+
 
 
 @api_view(['POST'])
@@ -120,4 +108,8 @@ def addGrade(request, *args, **kwargs):
         return Response(data = {"message": 
                                 "The grade was successfully added"}, status=201)
 
-        
+@api_view(['GET'])
+def testView(request, *args, **kwargs):
+    test = Test.objects.all()
+    serializer = testSerializer(test, many = True)
+    return Response(serializer.data)

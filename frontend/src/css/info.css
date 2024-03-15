@@ -44,7 +44,7 @@
     padding: 1.6rem 3.2rem;
     border-radius: 15px;
     cursor: pointer;
-    color: white;
+    color: var(--blue-shade-1);
     font-size: 1.8rem;
     font-family: inherit;
     align-items: center;
@@ -58,9 +58,9 @@
 .info-btn:hover,
 .info-btn:active {
     box-shadow: inset 0 0 0 2px var(--blue-tint-1);
-
+    color: white;
     background-color: transparent;
-    ;
+
 }
 
 .title {

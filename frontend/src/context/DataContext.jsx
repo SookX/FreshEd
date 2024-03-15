@@ -24,9 +24,9 @@ const DataProvider = ({ children }) => {
 
     useEffect(() => {
         const fetching = async () => {
-            const response = await axios.get('http://127.0.0.1:8000/school/api/combined/')
+            const response = await axios.get('http://127.0.0.1:8000/school/api/testView/')
 
-            setTests(response.data.tests)
+            setTests(response.data[0].tests)
         }
 
         fetching()
@@ -50,6 +50,12 @@ const DataProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
     }, [loggedIn])
+
+    const fetchAccount = async () => {
+        if(loggedIn){
+            const response = await axios.post('', {id: JSON.parse(localStorage.getItem())})
+        }
+    }
 
     const assignments = [
         {

@@ -1,17 +1,18 @@
 .assignments-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 3.2rem;
     /* background-color: antiquewhite; */
     min-height: 100vh;
     padding-top: 12.8rem;
-    padding-left: 14rem;
+    padding-left: 5rem;
 }
 
 .box {
     /* background-color: aqua; */
     height: 25rem;
     width: 40rem;
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
     padding-left: 3rem;
     padding-right: 3rem;
 

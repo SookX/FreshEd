@@ -107,35 +107,40 @@ class School(models.Model):
 
 
 class Test(models.Model):
-    title = models.TextField(max_length = 1000)
-
+    title = models.TextField(max_length = 100, default = "", null = False)
+    teacher = models.ForeignKey('Teacher', on_delete=models.CASCADE, default = "", null = False)
     def __str__(self):
         return self.title
     
-class Exercise(models.Model):
-    name = models.TextField(max_length = 1000)
-    question = models.ManyToManyField(Test, related_name='question')
-    #optionOne = models.BooleanField(default = False) 
-    #correct_answer = models.TextField(max_length = 1000, default = "")
+class Question(models.Model):
+    test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    question = models.CharField(max_length = 200, default = "", null = False)
+    
 
     def __str__(self):
         return self.name
+    
 
 class Answers(models.Model):
-    name = models.TextField(max_length = 1000)
-    ans = models.ManyToManyField(Exercise, related_name='answer')
+    type = models.BooleanField(default=0)  # 0 - for closed, 1 - for open
+    answer = models.CharField(max_length=1000, default="")  # Add default value here
+    is_True = models.BooleanField(default=0)
+    question = models.ForeignKey('Question', on_delete=models.CASCADE, null=True)  
+
+    def __str__(self):
+        return self.name
 
     def __str__(self):
         return self.name
     
-class option_state(models.Model):
-    option_s = models.BooleanField(default = False)
-    option_m = models.ManyToManyField(Exercise, related_name = 'option_m')
-
-class correct_answer(models.Model):
-    name = models.TextField(max_length = 1000)
-    correct_ans = models.ManyToManyField(Exercise, related_name='correct_ans')
-    
+#class option_state(models.Model):
+#    option_s = models.BooleanField(default = False)
+#    option_m = models.ManyToManyField('Exercise'', related_name = 'option_m')
+#
+#class correct_answer(models.Model):
+#    name = models.TextField(max_length = 1000)
+#    correct_ans = models.ManyToManyField(Exercise, related_name='correct_ans')
+#    
     
 #for later
 

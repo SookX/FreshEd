@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+def server_icon_upload_path(instance, filename):
+    return f"user/{instance.id}/profile_picutre/{filename}"
+
+
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, role, password=None):
         if not email:
@@ -33,6 +37,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=255)
     role = models.BooleanField(default=0)
     is_staff = models.BooleanField(default=False)
+    profile_picture = models.ImageField(upload_to=server_icon_upload_path, blank=True, null=True)
 
     objects = UserAccountManager()
     USERNAME_FIELD = 'email'

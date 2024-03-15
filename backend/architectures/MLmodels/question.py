@@ -67,7 +67,7 @@ def answers(text, num_of_questions, num_of_answers):
     }
     res = nlp(QA_input)
     curr['answer'] = res['answer']
-    prompt = f"Question: {generated_question}, Generate {num_of_answers - 1} wrong answers, without the real one ({res['answer']}) ( only the answer) \nIn this format 1.Wrong answer, 2.Wrong answer, etc. "
+    prompt = f"Question: {generated_question}, Generate {num_of_answers - 1} wrong answers, without the real one ({res['answer']}) ( only the answer) \nIn this format 1.Wrong answer, 2.Wrong answer, 3.Wrong answer, etc."
     print(prompt)
     response = openai.ChatCompletion.create(
       model="gpt-3.5-turbo-0613",
@@ -96,28 +96,6 @@ def answers(text, num_of_questions, num_of_answers):
 
 
 text = """
-JavaScript was initially created to “make web pages alive”.
-
-The programs in this language are called scripts. They can be written right in a web page’s HTML and run automatically as the page loads.
-
-Scripts are provided and executed as plain text. They don’t need special preparation or compilation to run.
-
-In this aspect, JavaScript is very different from another language called Java.
-
-Why is it called JavaScript?
-When JavaScript was created, it initially had another name: “LiveScript”. But Java was very popular at that time, so it was decided that positioning a new language as a “younger brother” of Java would help.
-
-But as it evolved, JavaScript became a fully independent language with its own specification called ECMAScript, and now it has no relation to Java at all.
-
-Today, JavaScript can execute not only in the browser, but also on the server, or actually on any device that has a special program called the JavaScript engine.
-
-The browser has an embedded engine sometimes called a “JavaScript virtual machine”.
-
-Different engines have different “codenames”. For example:
-
-V8 – in Chrome, Opera and Edge.
-SpiderMonkey – in Firefox.
-…There are other codenames like “Chakra” for IE, “JavaScriptCore”, “Nitro” and “SquirrelFish” for Safari, etc.
-The terms above are good to remember because they are used in developer articles on the internet. We’ll use them too. For instance, if “a feature X is supported by V8”, then it probably works in Chrome, Opera and Edge.
+Albert Einstein ( 14 March 1879 - 18 April 1955) was a German-born theoretical physicist who is widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, Einstein also made important contributions to quantum mechanics, and was thus a central figure in the revolutionary reshaping of the scientific understanding of nature that modern physics accomplished in the first decades of the twentieth century.[1][5] His mass-energy equivalence formula E = mc2, which arises from relativity theory, has been called "the world's most famous equation".[6] He received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect",[7] a pivotal step in the development of quantum theory. His work is also known for its influence on the philosophy of science.[8][9] In a 1999 poll of 130 leading physicists worldwide by the British journal Physics World, Einstein was ranked the greatest physicist of all time.[10] His intellectual achievements and originality have made the word Einstein broadly synonymous with genius.
 """
 print(answers(text, 3, 4))

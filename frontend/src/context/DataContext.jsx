@@ -50,7 +50,7 @@ const DataProvider = ({ children }) => {
     const fetchAccount = async () => {
         if(loggedIn){
             try {
-                const response = await axios.post('http://127.0.0.1:8000/authenticate/info/', {id: JSON.parse(localStorage.getItem('accData')).id})
+                const response = await axios.post('http://127.0.0.1:8000/authenticate/isUser/', {id: JSON.parse(localStorage.getItem('accData')).id})
 
                 console.log('ACC DATA')
                 console.log(response)

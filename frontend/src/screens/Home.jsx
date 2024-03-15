@@ -1,4 +1,5 @@
 import brain from '../img/hat.png'
+import home from '../img/home.jpg'
 
 const Home = () => {
 

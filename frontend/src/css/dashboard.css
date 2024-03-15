@@ -42,9 +42,16 @@
     gap: 1.2rem;
 }
 
-.sidebar-nav-link {
+.sidebar-nav-link:link,
+.sidebar-nav-link:visited {
     text-decoration: none;
     color: inherit;
+    transition: 0.2s;
+}
+
+.sidebar-nav-link:hover,
+.sidebar-nav-link:active {
+    color: var(--green-tint-1);
 }
 
 
@@ -52,8 +59,105 @@
 
 /* MARKBOOK */
 .section-markbook {
-    padding: 12.8rem 4.8rem 9.6rem 4.8rem;
-    background-color: aqua;
+    /* padding: 12.8rem 4.8rem 9.6rem 4.8rem; */
+    padding-top: 12.8rem;
     min-height: 100vh;
     overflow: auto;
+    font-size: 2.4rem;
+}
+
+.first-row {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.markbook-container {
+    width: 100%;
+    display: grid;
+    /* align-items: center; */
+    grid-template-columns: 1fr 3fr auto;
+    /* column-gap: 3.2rem; */
+    /* row-gap: 1.8rem; */
+
+    padding: 0 4.8rem;
+}
+
+.markbook-grades,
+.markbook-subject,
+.markbook-average {
+    /* border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+    border-top: solid 1px rgba(255, 255, 255, 0.5); */
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    width: 100%;
+    /* padding-bottom: 1.2rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem; */
+    padding: 1.8rem 1.2rem;
+}
+
+.markbook-grades {
+    display: flex;
+    justify-content: end;
+    gap: 1.8rem;
+}
+
+.markbook-grade {
+    /* background-color: red; */
+    padding: 1.8rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    font-size: 1.8rem;
+
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.grade-dropdown {
+    position: absolute;
+    bottom: -1rem;
+    right: 0;
+    background-color: white;
+    transform: translateY(100%);
+    z-index: 1;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    background-color: var(--bg-tint-1);
+}
+
+.markbook-grade.red {
+    border: solid 0.5px var(--red);
+    box-shadow: 0 0 0.4rem var(--red), inset 0 0 0.4rem var(--red);
+}
+
+.markbook-grade.orange {
+    border: solid 0.5px var(--orange);
+    box-shadow: 0 0 0.4rem var(--orange), inset 0 0 0.4rem var(--orange);
+}
+
+.markbook-grade.yellow {
+    border: solid 0.5px var(--yellow);
+    box-shadow: 0 0 0.4rem var(--yellow), inset 0 0 0.4rem var(--yellow);
+}
+
+.markbook-grade.lime {
+    border: solid 0.5px var(--green2);
+    box-shadow: 0 0 0.4rem var(--green2), inset 0 0 0.4rem var(--green2);
+}
+
+.markbook-grade.green {
+    border: solid 0.5px var(--green);
+    box-shadow: 0 0 0.4rem var(--green), inset 0 0 0.4rem var(--green);
+}
+
+.markbook-average {
+    justify-self: end;
+    text-align: end;
 }

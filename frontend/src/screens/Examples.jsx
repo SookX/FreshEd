@@ -5,6 +5,10 @@ import { useParams } from "react-router-dom";
 const Examples = ({ teacher = false }) => {
     const { tests, setTests } = useContext(DataContext)
 
+
+
+
+
     const id = useParams().id
 
     const [currentTest, setCurrentTest] = useState()
@@ -14,9 +18,31 @@ const Examples = ({ teacher = false }) => {
     }, [tests, id])
 
     // SOCKETS
+    const socket = new WebSocket('ws://localhost:8080');
+
+    socket.addEventListener("open", (event) => {
+        console.log('ws connection has started')
+
+        if(teacher) socket.send('teacher-123')
+    });
+
+    console.log(teacher)
+
+    useEffect(() => {
+        if(teacher) {
+            console.log('Teacher view')
+
+            socket.addEventListener("message", (event) => {
+                console.log(event.data)
+            });
+
+        }
+    }, [])
+
+
     useEffect(() => {
         const handleSocket = () => {
-            // if(document.hidden) console.log('USER LEFT PAGE')
+            if(document.hidden && teacher == false) socket.send('User Alt Tabbed');
         }
 
         document.addEventListener('visibilitychange', handleSocket)

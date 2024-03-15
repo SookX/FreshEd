@@ -28,9 +28,12 @@ const Info = () => {
         !loading ? (
             <div className="info-container">
                 <div className="main-info">
-                    <h1 className="title">{element.title}</h1>
-                    <p className="answer">{element.description}</p>
-                    <button className="info-btn" onClick={() => navigate(`/test`)}>Continue with the test</button>
+                    <div className="inwraped">
+                        <h1 className="title">{element.title}</h1>
+                        <p className="answer exam">{element.description}</p>
+                        <button className="info-btn" onClick={() => navigate(`/test`)}>Continue</button>
+
+                    </div>
                 </div>
 
             </div>

@@ -77,6 +77,10 @@ const Examples = () => {
                         </div>
                     </Fragment>
                 ))}
+                <div className="info-btn-container">
+                    <button className="info-btn">Submit</button>
+                </div>
+
             </div>
         </section>
     );

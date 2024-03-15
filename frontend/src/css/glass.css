@@ -26,8 +26,8 @@
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
+    /* border-left: 1px solid rgba(255, 255, 255, 0.5); */
     backdrop-filter: blur(10px);
     transform-style: preserve-3d;
     /* transform: perspective(3px) */
@@ -91,7 +91,7 @@
 .glassmorphism-container.blue:hover .color-overlay {
     opacity: 0.4;
     background: var(--blue);
-    box-shadow: -100px -100px 70px var(--blue);
+    box-shadow: -100px -100px 70px var(--blue-tint-2);
     filter: blur(100px);
 }
 

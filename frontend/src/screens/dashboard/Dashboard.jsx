@@ -32,7 +32,7 @@ const Sidebar = () => {
     return (
         <div className="dashboard-sidebar-container">
             <aside className="dashboard-sidebar">
-                
+
                 <div className="sidebar-personal-info">
                     <p className="sidebar-class">{accData.class} class</p>
                     <p className="sidebar-name">{accData.first_name} {accData.last_name}</p>
@@ -40,9 +40,9 @@ const Sidebar = () => {
 
                 <nav className="sidebar-nav">
                     <ul className="sidebar-nav-links">
-                        <li><Link to='/dashboard' className="sidebar-nav-link">Markbook</Link></li>
+                        <li><Link className="sidebar-nav-link">Markbook</Link></li>
                         <li><Link className="sidebar-nav-link">My Learning</Link></li>
-                        <li><Link className="sidebar-nav-link">Assignments</Link></li>
+                        <li><Link to="/dashboard/assignments" className="sidebar-nav-link">Assignments</Link></li>
                     </ul>
                 </nav>
 

@@ -9,6 +9,30 @@ import torch
 import dotenv
 import os
 
+def load_question():
+  nltk.download('punkt')
+  nltk.download('stopwords')
+
+  featurizer = TfidfVectorizer(
+      stop_words=stopwords.words('english'),
+      norm='l1',
+  )
+
+
+  model_name = "valhalla/t5-base-e2e-qg"
+  tokenizer = T5Tokenizer.from_pretrained(model_name)
+  model = T5ForConditionalGeneration.from_pretrained(model_name)
+
+  model_name = "deepset/roberta-base-squad2"
+
+  nlp = pipeline('question-answering', model=model_name, tokenizer=model_name)
+
+
+  path_to_env = '../backend/.env'
+  dotenv.load_dotenv(path_to_env)
+  openai.api_key = os.getenv('OPENAI_API_KEY')
+  return featurizer, tokenizer, model, nlp
+
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -17,25 +41,19 @@ featurizer = TfidfVectorizer(
     stop_words=stopwords.words('english'),
     norm='l1',
 )
-
-def get_sentence_score(tfidf_row):
-  x = tfidf_row[tfidf_row != 0]
-  return x.mean()
-
-
 model_name = "valhalla/t5-base-e2e-qg"
 tokenizer = T5Tokenizer.from_pretrained(model_name)
 model = T5ForConditionalGeneration.from_pretrained(model_name)
-
 model_name = "deepset/roberta-base-squad2"
-
 nlp = pipeline('question-answering', model=model_name, tokenizer=model_name)
-
-path_to_env = '../../backend/.env'
+path_to_env = '../backend/.env'
 dotenv.load_dotenv(path_to_env)
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-print(openai.api_key)
+def get_sentence_score(tfidf_row):
+    x = tfidf_row[tfidf_row != 0]
+    return x.mean()
+
 def answers(text, num_of_questions, num_of_answers):
   sents = nltk.sent_tokenize(text)
 
@@ -93,9 +111,3 @@ def answers(text, num_of_questions, num_of_answers):
     #print(generated_text)
     #print("Generated text: ", texts)
     #print(generated_question + res['answer'] )
-
-
-text = """
-Albert Einstein ( 14 March 1879 - 18 April 1955) was a German-born theoretical physicist who is widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, Einstein also made important contributions to quantum mechanics, and was thus a central figure in the revolutionary reshaping of the scientific understanding of nature that modern physics accomplished in the first decades of the twentieth century.[1][5] His mass-energy equivalence formula E = mc2, which arises from relativity theory, has been called "the world's most famous equation".[6] He received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect",[7] a pivotal step in the development of quantum theory. His work is also known for its influence on the philosophy of science.[8][9] In a 1999 poll of 130 leading physicists worldwide by the British journal Physics World, Einstein was ranked the greatest physicist of all time.[10] His intellectual achievements and originality have made the word Einstein broadly synonymous with genius.
-"""
-print(answers(text, 3, 4))

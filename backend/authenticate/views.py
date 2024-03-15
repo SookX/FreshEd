@@ -55,11 +55,37 @@ def isUser(request, *args, **kwargs):
                         'role': role,
                         'first_name': student.first_name,
                         'last_name': student.last_name,
+                        'email': student.email,
                         'class_name': class_name,
                         'grades': getGrades(student.id),
                     }
                     print(data)
                     return Response(data = data,status=200)
+            if role == 1:
+                print(user.email)
+                teacher = Teacher.objects.filter(email = user.email).first()
+                subject_instance = teacher.subject
+                class_name = getClassName(subject_instance) if subject_instance else None
+
+                school_instance = teacher.school
+                school_name = getClassName(school_instance) if school_instance else None
+                print(teacher)
+                print(school_name)
+                if teacher:
+                    print('isTeacher')
+                    data = {
+                        'role': role,
+                        'first_name': teacher.first_name,
+                        'last_name': teacher.last_name,
+                        'email': teacher.email,
+                        'subject': class_name,
+                        'school_name': school_name
+        
+                    }
+                    return Response(data = data, status=200)
+                else:
+                    return Response(status = 400)
+
     
 #api_view(['GET'])
 #ef getUserCredentials(request, *args, **kwargs):

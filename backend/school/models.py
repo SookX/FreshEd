@@ -77,8 +77,6 @@ class Teacher(models.Model):
     subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
     school = models.ForeignKey('School', on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.name
     
 class Subject(models.Model):
     id = models.AutoField(primary_key=True)

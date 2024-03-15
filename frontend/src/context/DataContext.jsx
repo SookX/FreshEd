@@ -5,56 +5,36 @@ import { useNavigate } from "react-router-dom";
 export const DataContext = createContext({})
 
 const DataProvider = ({ children }) => {
+    // AXIOS INTERCEPTORS
+    axios.interceptors.request.use((request) => {
+        console.log('REQUEST')
+        console.log(request)
+        return request
+    })
+
+    axios.interceptors.response.use((response) => {
+        console.log('RESPONSE')
+        console.log(response)
+        return response
+    })
+
+
     // TESTS
     const [tests, setTests] = useState([])
 
     useEffect(() => {
         const fetching = async () => {
-            try {
-                const response = await axios.get('http://127.0.0.1:8000/school/api/test/')
+            const response = await axios.get('http://127.0.0.1:8000/school/api/combined/')
 
-                console.log(response)
-            } catch (err) {
-                console.log(err)
-            }
+            setTests(response.data.tests)
         }
 
         fetching()
     }, [])
-
-    // EXERCISE
-    const [exercises, setExercises] = useState([])
 
     useEffect(() => {
-        const fetching = async () => {
-            try {
-                const response = await axios.get('http://127.0.0.1:8000/school/api/exercise/')
-
-                console.log(response)
-            } catch (err) {
-                console.log(err)
-            }
-        }
-
-        fetching()
-    }, [])
-
-    // EXERCISE
-    const [answers, setAnswers] = useState([])
-
-    useEffect(() => {
-        const fetching = async () => {
-            try {
-                const response = await axios.get('http://127.0.0.1:8000/school/api/answer/')
-
-                console.log(response)
-            } catch (err) {
-                console.log(err)
-            }
-        }
-
-        fetching()
-    }, [])
+        console.log(tests)
+    }, [tests])
 
 
     // NAVIGATION
@@ -126,7 +106,8 @@ const DataProvider = ({ children }) => {
 
     return (
         <DataContext.Provider value={{
-            loggedIn, setLoggedIn, navigate, sticky, setSticky, assignments
+            loggedIn, setLoggedIn, navigate, sticky, setSticky, assignments,
+            tests, setTests
         }}>
             {children}
         </DataContext.Provider>

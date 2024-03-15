@@ -7,8 +7,7 @@
 }
 
 .main-info {
-    display: flex;
-    flex-direction: column;
+    position: relative;
     height: 40rem;
     width: 100rem;
     background-color: aqua;
@@ -19,12 +18,21 @@
 }
 
 .info-btn {
-    display: block;
+    position: absolute;
     width: 20rem;
     height: 4rem;
     border: none;
     border-radius: 15px;
-    margin-left: auto;
-    margin-right: 3rem;
-    justify-self: flex-end;
+    bottom: 3rem;
+    right: 3rem;
+
+}
+
+.title {
+
+    font-size: 7rem;
+    text-align: center;
+    top: 3rem;
+    padding-top: 2.4rem;
+    padding-bottom: 2rem;
 }

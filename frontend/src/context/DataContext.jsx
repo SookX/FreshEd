@@ -51,6 +51,12 @@ const DataProvider = ({ children }) => {
         localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
     }, [loggedIn])
 
+    const fetchAccount = async () => {
+        if(loggedIn){
+            const response = await axios.post('', {id: JSON.parse(localStorage.getItem())})
+        }
+    }
+
     const assignments = [
         {
             "title": "Mathematics",

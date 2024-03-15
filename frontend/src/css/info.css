@@ -7,6 +7,7 @@
 }
 
 .main-info {
+    position: relative;
     height: 40rem;
     width: 100rem;
     background-color: aqua;
@@ -14,4 +15,24 @@
     margin-right: auto;
     border-radius: 15px;
 
+}
+
+.info-btn {
+    position: absolute;
+    width: 20rem;
+    height: 4rem;
+    border: none;
+    border-radius: 15px;
+    bottom: 3rem;
+    right: 3rem;
+
+}
+
+.title {
+
+    font-size: 7rem;
+    text-align: center;
+    top: 3rem;
+    padding-top: 2.4rem;
+    padding-bottom: 2rem;
 }

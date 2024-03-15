@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Glass from '../../components/Glass'
 
 const MarkBook = () => {
     const [grades, setGrades] = useState([
@@ -90,6 +91,13 @@ const MarkBook = () => {
                     ))
                 }
             </div>
+
+            <Glass classes="average-container purple">
+                <div>
+                    <p className="average-text">Average Grade:</p>
+                    <p className="average-grade">6.00</p>
+                </div>
+            </Glass>
 
             {/* <table className="markbook-container">
                 <tr>

@@ -21,6 +21,7 @@ class CombinedSerializer(serializers.Serializer):
                 serialized_exercises.append({
                     'id': exercise.id,
                     'name': exercise.name,
+                    'Option': Exercise.optionOne,
                     'answers': serialized_answers
                 })
             serialized_tests.append({

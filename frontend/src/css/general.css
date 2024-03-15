@@ -34,7 +34,8 @@
     --purple-tint-1: #e666ff;
 
     --blue: #008efd;
-    --blue-tint-2: #1a99fd --blue-tint-1: #769cbc;
+    --blue-tint-2: #1a99fd;
+    --blue-tint-1: #769cbc;
 }
 
 * {
@@ -78,12 +79,13 @@ html {
     color: var(--green2);
 }
 
-.purple {
+/* .purple {
     /* box-shadow: 0 0 1.2rem var(--purple), inset 0 0 1.2rem var(--purple); */
-    border: solid 2px var(--purple);
-    color: var(--purple);
-    /* border: solid 2px white; */
-}
+/* border: solid 2px var(--purple);
+color: var(--purple); */
+/* border: solid 2px white; */
+/* } */
+
 
 /* .orange {
     box-shadow: 0 0 1.2rem var(--orange), inset 0 0 1.2rem var(--orange);

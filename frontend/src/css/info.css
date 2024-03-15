@@ -7,6 +7,8 @@
 }
 
 .main-info {
+    display: flex;
+    flex-direction: column;
     height: 40rem;
     width: 100rem;
     background-color: aqua;
@@ -17,6 +19,12 @@
 }
 
 .info-btn {
+    display: block;
     width: 20rem;
-    height: ;
+    height: 4rem;
+    border: none;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: 3rem;
+    justify-self: flex-end;
 }

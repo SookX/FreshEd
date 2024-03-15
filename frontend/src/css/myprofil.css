@@ -188,8 +188,6 @@
     color: var(--main-shade1);
 }
 
-.btn-save {}
-
 .btn-save,
 .btn-save:link,
 .btn-save:visited {
@@ -198,7 +196,7 @@
     padding: 1.6rem 3.2rem;
     border-radius: 15px;
     cursor: pointer;
-    color: white;
+    color: var(--green-shade-2);
     font-size: 1.8rem;
     font-family: inherit;
 
@@ -208,5 +206,6 @@
 .btn-save:hover,
 .btn-save:active {
     box-shadow: inset 0 0 0 2px var(--green-tint-2);
+    color: white;
     background-color: transparent;
 }

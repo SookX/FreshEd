@@ -6,11 +6,12 @@ import Home from "./screens/Home"
 import Header from "./screens/Header"
 import Glass from "./components/Glass"
 import Dashboard from "./screens/dashboard/Dashboard"
-import Dashboard2 from "./screens/dashboard/Dashboard2"
+
 import MarkBook from "./screens/dashboard/MarkBook"
 import Examples from "./screens/Examples"
 import Tests from "./screens/Tests"
 import Info from "./screens/Information"
+import MyProfile from "./screens/MyProfile"
 
 
 function App() {
@@ -30,12 +31,14 @@ function App() {
 
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<MarkBook />} />
-            <Route path="test" element={<Dashboard2 />} />
+            <Route path="test" element={<Dashboard />} />
             <Route path="assignments" element={<Tests />} />
+            <Route path="myprofile" element={<MyProfile />} />
           </Route>
 
           <Route path="/test" element={<Examples />} />
           <Route path="/info/:id" element={<Info />} />
+
 
         </Routes>
       </DataProvider>

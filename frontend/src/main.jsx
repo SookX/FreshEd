@@ -9,6 +9,7 @@ import './css/glass.css'
 import './css/examples.css'
 import './css/assignments.css'
 import './css/info.css'
+import './css/myprofil.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

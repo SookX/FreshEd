@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Question, Test, Answers, Class, Teacher, School, Subject, Student, Grade
 import json
+from .serializers import testSerializer
 # Create your views here.
 
 
@@ -107,4 +108,8 @@ def addGrade(request, *args, **kwargs):
         return Response(data = {"message": 
                                 "The grade was successfully added"}, status=201)
 
-        
+@api_view(['GET'])
+def testView(request, *args, **kwargs):
+    test = Test.objects.all()
+    serializer = testSerializer(test, many = True)
+    return Response(serializer.data)

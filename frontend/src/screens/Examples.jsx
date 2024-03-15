@@ -115,7 +115,7 @@ const Examples = ({ teacher = false }) => {
                                         {
                                             question.answers.map((ans, k) => (
                                                 <li key={k} className="answer">
-                                                    <input name="q1" type="radio" className="radio-btn" />
+                                                    <input name={`q${i}`} type="radio" className="radio-btn" />
                                                     <span className="choose">{ans.answer}</span>
                                                 </li>
                                             ))

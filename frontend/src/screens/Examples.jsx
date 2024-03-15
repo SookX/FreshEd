@@ -2,7 +2,7 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import { DataContext } from "../context/DataContext";
 import { useParams } from "react-router-dom";
 
-const Examples = ({ teacher = false }) => {
+const Examples = () => {
     const { tests, setTests } = useContext(DataContext)
 
     const id = useParams().id
@@ -13,6 +13,11 @@ const Examples = ({ teacher = false }) => {
         // console.log('CURRENT TEST')
         if(tests) setCurrentTest(tests.find(test => test.id === +id))
     }, [tests, id])
+
+    // useEffect(() => {
+    //     console.log('CURRENT TEST')
+    //     console.log(currentTest)
+    // }, [currentTest])
 
 
 
@@ -27,26 +32,26 @@ const Examples = ({ teacher = false }) => {
     socket.addEventListener("open", (event) => {
         // console.log('ws connection has started')
 
-        if(teacher) socket.send('teacher-123')
+        // if(teacher) socket.send('teacher-123')
     });
 
     // console.log(teacher)
 
     useEffect(() => {
-        if(teacher) {
+        // if(teacher) {
             // console.log('Teacher view')
 
             socket.addEventListener("message", (event) => {
                 // console.log(event.data)
             });
 
-        }
+        // }
     }, [])
 
 
     useEffect(() => {
         const handleSocket = () => {
-            if(document.hidden && teacher == false) socket.send('User Alt Tabbed');
+            if(document.hidden) socket.send('User Alt Tabbed');
         }
 
         document.addEventListener('visibilitychange', handleSocket)
@@ -69,19 +74,6 @@ const Examples = ({ teacher = false }) => {
 
     return (
         <section className="main-test">
-            {/* {
-                teacher ?
-                <p>TEACHER</p>
-                :
-                <p>STUDENT</p>
-            }
-            <p>{id}</p> */}
-
-            {/* 
-                средна шунка класик 3
-                средна мастър бургер
-            */}
-
             {
                 currentTest &&
                 <div className="test-container">

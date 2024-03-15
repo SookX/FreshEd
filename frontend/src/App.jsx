@@ -37,7 +37,6 @@ function App() {
           </Route>
 
           <Route path="/test/:id" element={<Examples />} />
-          <Route path="/test/:id/teacher" element={<Examples teacher={true} />} />
           <Route path="/info/:id" element={<Info />} />
 
 

@@ -2,7 +2,7 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import { DataContext } from "../context/DataContext";
 import { useParams } from "react-router-dom";
 
-const Examples = () => {
+const Examples = ({ teacher = false }) => {
     const { tests, setTests } = useContext(DataContext)
 
     const id = useParams().id
@@ -72,11 +72,18 @@ const Examples = () => {
     return (
         <section className="main-test">
             {
+                teacher ?
+                <p>TEACHER</p>
+                :
+                <p>STUDENT</p>
+            }
+            <p>{id}</p>
+            {/* {
                 currentTest &&
                 <div className="test-container">
                     <h1 className="heading-test">{currentTest.title}</h1>
 
-                    <br /> {/* br-to na Vasi Sveej */}
+                    <br /> {/* br-to na Vasi Sveej }
 
                     {currentTest.exercises.map((question, i) => (
                         <Fragment key={i}>
@@ -101,7 +108,7 @@ const Examples = () => {
                                             </li>
                                         ))
                                     }
-                                </ul> */}
+                                </ul> }
                                 {
                                     question.Option ?
                                     <ul className="answers"><li className="answer"><textarea /></li></ul>
@@ -125,7 +132,7 @@ const Examples = () => {
                 </div>
 
             </div>
-            }
+            } */}
         </section>
     );
 }

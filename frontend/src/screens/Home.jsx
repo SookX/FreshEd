@@ -1,5 +1,5 @@
 import brain from '../img/hat.png'
-import home from '../img/home.jpg'
+import home from '../img/home.png'
 
 const Home = () => {
 
@@ -14,7 +14,7 @@ const Home = () => {
                     </div>
 
                     <div className="main-imgbox">
-                        <img src={brain} className='main-img' />
+                        <img src={home} className='main-img' />
                     </div>
                 </div>
             </section>

@@ -12,23 +12,8 @@ const MyProfile = () => {
     // }, [account]);
 
     const [editField, setEditField] = useState(null);
-
     const [profilePicture, setProfilePicture] = useState(null);
     const fileInputRef = useRef(null);
-
-
-    function handleEdit(field) {
-        setEditField(field);
-    }
-
-    function handleSave() {
-        if (editField === 'name') {
-
-        } else if (editField === 'password') {
-
-        }
-        setEditField(null);
-    }
 
     function handleFileSelect(event) {
         const file = event.target.files[0];
@@ -37,6 +22,12 @@ const MyProfile = () => {
         }
     }
 
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (file) {
+            setProfilePicture(file);
+        }
+    }
 
 
     function handleProfilePictureClick() {
@@ -86,9 +77,9 @@ const MyProfile = () => {
                     <span className="email">email</span>
                 </div>
 
-                {/* <div className="btn-container">
+                <div className="btn-container">
                     <button className="btn" onClick={(e) => handleSubmit(e)}>Save changes</button>
-                </div> */}
+                </div>
             </div>
         </main >
     );

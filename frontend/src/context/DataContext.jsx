@@ -46,14 +46,14 @@ const DataProvider = ({ children }) => {
 
     // LOGIN SYSTEM
     const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem('loggedIn')) || false)
+    const [accountData, setAccountData] = useState({})
 
     const fetchAccount = async () => {
         if(loggedIn){
             try {
                 const response = await axios.post('http://127.0.0.1:8000/authenticate/isUser/', {id: JSON.parse(localStorage.getItem('accData')).id})
 
-                console.log('ACC DATA')
-                console.log(response)
+                setAccountData(response.data)
             } catch(err) {
                 console.log(err)
             }
@@ -128,7 +128,7 @@ const DataProvider = ({ children }) => {
     return (
         <DataContext.Provider value={{
             loggedIn, setLoggedIn, navigate, sticky, setSticky, assignments,
-            tests, setTests
+            tests, setTests, accountData
         }}>
             {children}
         </DataContext.Provider>

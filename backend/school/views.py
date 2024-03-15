@@ -113,3 +113,15 @@ def testView(request, *args, **kwargs):
     test = Test.objects.first()
     serializer = testSerializer(instance=test)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def answer_isCorrect(request, *args, **kwargs):
+    id = request.GET.get('id')  
+    try:
+        answer = Answers.objects.get(pk=id)
+        if answer.is_True:
+            return Response(f"The answer with this id ({id}) is correct.")
+        else:
+            return Response(f"The answer with this id ({id}) is incorrect.")
+    except Answers.DoesNotExist:
+        return Response(f"No answer found with the id: {id}", status=404)

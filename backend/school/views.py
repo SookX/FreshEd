@@ -98,11 +98,14 @@ def addGrade(request, *args, **kwargs):
         grade = data['grade']
         subject = data['subject']
         subject = Subject.objects.get(name = subject)
+        holder_id = data['holder_id']
+        holder = Student.objects.get(id = holder_id)
         
         grade = Grade(
                       comment = comment,
                       grade = grade,
-                      subject = subject)
+                      subject = subject,
+                      holder = holder)
         grade.save()
         return Response(data = {"message": 
                                 "The grade was successfully added"}, status=201)

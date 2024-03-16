@@ -8,6 +8,7 @@
     --bg-tint-2: #6d7479;
     --bg: #0c1720;
     --bg-shade-1: #081016;
+    --bg-shade-2: #010203;
 
     --main-gradient: linear-gradient(150deg, rgba(4, 170, 107, 1) 0%, rgba(62, 7, 156, 1) 51%, rgba(214, 0, 255, 1) 100%);
     /* --main-gradient: linear-gradient(150deg, rgba(4, 170, 107, 1) 0%, rgba(62, 7, 156, 1) 51%); */

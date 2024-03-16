@@ -36,7 +36,18 @@
     text-decoration: none;
 }
 
-.dark-blue {
-    background-color: var(--blue-tint-1);
-    /* color: ; */
+
+.btn-grade.test {
+    border-radius: 60px;
+    height: 25rem;
+    width: 40rem;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.glass-avg {
+    display: flex;
+    align-items: center;
+    padding-right: 15rem;
 }

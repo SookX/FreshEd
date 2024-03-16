@@ -9,6 +9,7 @@ const MyLearning = () => {
 
     const { corections } = useContext(DataContext)
 
+
     const [loading, setLoading] = useState(true)
 
     const id = useParams().id
@@ -20,6 +21,9 @@ const MyLearning = () => {
 
     }, [corections, id])
 
+    useEffect(() => {
+        console.log(corections)
+    }, [corections])
 
 
     useEffect(() => {
@@ -27,12 +31,13 @@ const MyLearning = () => {
     }, [element])
 
     return (
-        corections.length &&
+        element && element.mistakes && element.mistakes.length > 0 &&
         <div className="aqua">
             <VerticalTimeline>
-                {corections.map((e, i) => {
+                {element.mistakes.map((e, i) => {
                     return (
                         <VerticalTimelineElement
+                            key={id}
                             contentStyle={{ background: 'rgb(4, 170, 107, 0.2)', color: '#82d5b5', height: '100%', padding: '1rem', fontSize: '4rem', border: 'none', boxShadow: 'none' }}
                             contentArrowStyle={{ borderRight: '7px solid  rgb(4, 170, 107, 0.2)' }}
                             iconStyle={{ background: '#0c1720', color: '#625149', height: '3rem', width: '3rem', margin: '0 0 0 -15px' }}

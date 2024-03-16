@@ -13,6 +13,7 @@ import './css/myprofil.css'
 import './css/mylearning.css'
 import './css/newgrade.css'
 import './css/toast.css'
+import './css/newtest.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

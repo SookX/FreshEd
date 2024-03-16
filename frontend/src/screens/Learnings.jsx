@@ -13,7 +13,7 @@ const Learning = () => {
         <div className="assignments-container">
             {corections.map((item) => (
                 <div onClick={() => navigate(`learnings/mylearning/${item.id}`)}>
-                    <Glass key={item.id} classes="box blue">
+                    <Glass key={item.id} classes="box green">
                         <h1 className="title-assignments">{item.title}</h1>
                         {item.mistakes.map((k) => (<p className="text-assignments">{k.description}</p>
                         ))}

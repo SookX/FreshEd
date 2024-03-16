@@ -48,7 +48,6 @@ class Student(models.Model):
     first_name = models.CharField(max_length=100, default='first')
     last_name = models.CharField(max_length=100 , default='last')
     school_class = models.ForeignKey('Class', on_delete=models.CASCADE)
-    grades = models.ManyToManyField('Grade', related_name='grades')
     def __str__(self):
         return self.name
     

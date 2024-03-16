@@ -3,6 +3,7 @@ import mimetypes
 from django.contrib.auth.hashers import check_password
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import HttpRequest 
 from user_profile.models import UserAccount
 from base64 import b64encode
 import mimetypes
@@ -22,14 +23,15 @@ def getPhoto(id):
 
 def getGrades(student_id):
     student = Student.objects.get(id=student_id)
-    grades = student.grades.all()  
+    grades = Grade.objects.filter(holder = student)
 
     grades_list = []
     for grade in grades:
         grade_info = {
             'id': grade.id,
-            'subject': grade.subject,
-            'grade': grade.grade
+            'subject': grade.subject.name,
+            'grade': grade.grade,
+            'comment': grade.comment
         }
         grades_list.append(grade_info)
 
@@ -49,6 +51,7 @@ def login(request, *args, **kwargs):
         return Response(data = {"id": str(user.id)}, status=200)
     else:
         return Response(data = {"message": "Wrong password."}, status=404)
+
 @api_view(['POST', 'GET'])
 def isUser(request, *args, **kwargs):
     if request.method == "POST":
@@ -56,11 +59,11 @@ def isUser(request, *args, **kwargs):
         data = json.loads(body)
         
         id = data['id']
-        user = UserAccount.objects.filter(id = id ).first()
+        user = UserAccount.objects.filter(id=id).first()
         if user:
             role = user.role
             if role == 0:
-                student = Student.objects.filter(email = user.email).first()
+                student = Student.objects.filter(email=user.email).first()
                 if student:
                     school_class_instance = student.school_class
                     class_name = getClassName(school_class_instance) if school_class_instance else None
@@ -73,33 +76,26 @@ def isUser(request, *args, **kwargs):
                         'grades': getGrades(student.id),
                     }
                     print(data)
-                    return Response(data = data,status=200)
+                    return Response(data=data, status=200)
             if role == 1:
-                print(user.email)
-                teacher = Teacher.objects.filter(email = user.email).first()
+                teacher = Teacher.objects.filter(email=user.email).first()
                 subject_instance = teacher.subject
                 class_name = getClassName(subject_instance) if subject_instance else None
 
                 school_instance = teacher.school
                 school_name = getClassName(school_instance) if school_instance else None
-                print(teacher)
-                print(school_name)
                 if teacher:
-                    print('isTeacher')
                     data = {
                         'role': role,
                         'first_name': teacher.first_name,
                         'last_name': teacher.last_name,
                         'email': teacher.email,
-                        'subject': class_name,
-                        'school_name': school_name
-        
+                        'subject_name': subject_instance.name if subject_instance else None,  # Extract subject name
+                        'school_name': school_name,
                     }
-                    return Response(data = data, status=200)
+                    return Response(data=data, status=200)
                 else:
-                    return Response(status = 400)
-
-    
+                    return Response(status=400)
 #api_view(['GET'])
 #ef getUserCredentials(request, *args, **kwargs):
 #   if request.method == "GET":

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const Examples = () => {
-    const { tests, setTests, accountData } = useContext(DataContext)
+    const { tests, setTests, accountData, handleAlert } = useContext(DataContext)
 
     const id = useParams().id
 
@@ -36,6 +36,7 @@ const Examples = () => {
 
             socket.addEventListener("message", (event) => {
                 console.log(event.data)
+                handleAlert('info', `${event.data}`)
             });
 
             socket.addEventListener("open", (event) => {

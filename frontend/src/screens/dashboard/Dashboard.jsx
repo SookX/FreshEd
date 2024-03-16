@@ -23,19 +23,15 @@ const Dashboard = () => {
 }
 
 const Sidebar = () => {
-    const accData = {
-        first_name: 'Martin',
-        last_name: 'Velchev',
-        class: '9V'
-    }
+    const { accountData } = useContext(DataContext)
 
     return (
         <div className="dashboard-sidebar-container">
             <aside className="dashboard-sidebar">
 
                 <div className="sidebar-personal-info">
-                    <p className="sidebar-class">{accData.class} class</p>
-                    <p className="sidebar-name">{accData.first_name} {accData.last_name}</p>
+                    <p className="sidebar-class">{accountData.class_name} class</p>
+                    <p className="sidebar-name">{accountData.first_name} {accountData.last_name}</p>
                 </div>
 
                 <nav className="sidebar-nav">

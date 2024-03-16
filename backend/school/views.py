@@ -110,6 +110,7 @@ def addGrade(request, *args, **kwargs):
                                 "The grade was successfully added"}, status=201)
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 def getTest(request, *args, **kwargs):
-    pass
+    if request.method == 'GET':
+        student_id = request.GET.

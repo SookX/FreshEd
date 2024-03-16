@@ -1,6 +1,7 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Glass from "../components/Glass"
+import { DataContext } from "../context/DataContext"
 
 const Register = () => {
     const [email, setEmail] = useState('')
@@ -9,6 +10,8 @@ const Register = () => {
     const [role, setRole] = useState(0)
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const { navigate } = useContext(DataContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -28,6 +31,8 @@ const Register = () => {
             const response = await axios.post('http://127.0.0.1:8000/authenticate/auth/users/', obj)
 
             console.log(response)
+            
+            if(response.status == 201) navigate('/login')
         } catch(err) {
             console.log(err)
         } finally {

@@ -1,9 +1,10 @@
 import { Fragment, useContext, useEffect, useState } from "react";
 import { DataContext } from "../context/DataContext";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const Examples = () => {
-    const { tests, setTests } = useContext(DataContext)
+    const { tests, setTests, accountData } = useContext(DataContext)
 
     const id = useParams().id
 
@@ -38,15 +39,15 @@ const Examples = () => {
     // console.log(teacher)
 
     useEffect(() => {
-        // if(teacher) {
-            // console.log('Teacher view')
+        if(accountData.role) {
+            console.log('Teacher view')
 
             socket.addEventListener("message", (event) => {
                 // console.log(event.data)
             });
 
-        // }
-    }, [])
+        }
+    }, [accountData])
 
 
     useEffect(() => {
@@ -68,10 +69,24 @@ const Examples = () => {
     // SUBMITING
     const [answers, setAnswers] = useState([])
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         console.log('ANSWERS')
         console.log(answers)
-        setAnswers([])
+        
+        const obj = {
+            lists: answers
+        }
+
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/school/api/answer_isCorrect/', obj)
+
+            console.log('POST ANSWERS')
+            console.log(response)
+        } catch(err) {
+            console.log(err)
+        } finally {
+            setAnswers([])
+        }
     }
 
 

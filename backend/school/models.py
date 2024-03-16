@@ -3,20 +3,20 @@ from django.db import models
 
 class Grade(models.Model):
     id = models.AutoField(primary_key=True)
-    HOMEWORK = 'HW'
-    TEST = 'TE'
-    FINAL_EXAM = 'FE'
-    GRADE_TYPES = [
-        (HOMEWORK, 'Homework'),
-        (TEST, 'Test'),
-        (FINAL_EXAM, 'Final Exam'),
-    ]
+    # HOMEWORK = 'HW'
+    # TEST = 'TE'
+    # FINAL_EXAM = 'FE'
+    # GRADE_TYPES = [
+    #     (HOMEWORK, 'Homework'),
+    #     (TEST, 'Test'),
+    #     (FINAL_EXAM, 'Final Exam'),
+    # ]
 
-    type = models.CharField(
-        max_length=2,
-        choices=GRADE_TYPES,
-        default=HOMEWORK,
-    )
+    # type = models.CharField(
+    #     max_length=2,
+    #     choices=GRADE_TYPES,
+    #     default=HOMEWORK,
+    # )
     
     comment = models.TextField(max_length=100)
     grade = models.IntegerField(default = 2, null = False)
@@ -51,6 +51,12 @@ class Student(models.Model):
     grades = models.ManyToManyField('Grade', related_name='grades')
     def __str__(self):
         return self.name
+    
+class Log(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey('Student', on_delete=models.CASCADE, default = "", null = False)
+    test = models.ForeignKey('Test', on_delete=models.CASCADE, default = "", null = False)
+    message = models.CharField(max_length = 100, default = 'User Alt Tabbed', null = False)
     
 class Class(models.Model):
     id = models.AutoField(primary_key=True)

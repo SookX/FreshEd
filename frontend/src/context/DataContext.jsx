@@ -18,6 +18,26 @@ const DataProvider = ({ children }) => {
     //     return response
     // })
 
+    // ALERTS
+
+    const [alerts, setAlerts] = useState([])
+
+    const handleAlert = (type, message, autoClose, closeTime) => {
+        const id = alerts.length ? alerts[alerts.length - 1].id + 1 : 1
+
+        const newAlert = {
+            id,
+            type,
+            message,
+            autoClose,
+            closeTime
+        }
+
+        setAlerts([...alerts, newAlert])
+    }
+
+
+
 
     // TESTS
     const [tests, setTests] = useState([])
@@ -209,7 +229,7 @@ const DataProvider = ({ children }) => {
     return (
         <DataContext.Provider value={{
             loggedIn, setLoggedIn, navigate, sticky, setSticky, assignments,
-            tests, setTests, accountData, corections
+            tests, setTests, accountData, corections, handleAlert, alerts, setAlerts
         }}>
             {children}
         </DataContext.Provider>

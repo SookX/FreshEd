@@ -94,22 +94,18 @@ def addGrade(request, *args, **kwargs):
     if request.method == "POST":
         body = request.body
         data = json.loads(body)
-        # type_ = str(data['type']).upper()
         comment = data['comment']
         grade = data['grade']
         subject = data['subject']
         subject = Subject.objects.get(name = subject)
-        holder_id = int(data['holder_id'])
-        holder = Student.objects.get(id = holder_id)
-        grade = Grade(comment = comment,
-                    grade = grade,
-                    subject = subject,
-                    holder = holder)
+        
+        grade = Grade(
+                      comment = comment,
+                      grade = grade,
+                      subject = subject)
         grade.save()
         return Response(data = {"message": 
                                 "The grade was successfully added"}, status=201)
-    else:
-        return Response(status=400)
 
 @api_view(['GET'])
 def testView(request, *args, **kwargs):

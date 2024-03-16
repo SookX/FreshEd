@@ -50,32 +50,59 @@ const MarkBook = () => {
     };
 
     return (
-        !accountData.role ? (
+        accountData.length &&
+            !accountData.role ? (
             <section className="section-markbook">
                 <div className="markbook-container">
                     <p className="markbook-subject first-row">Subject</p>
                     <p className="markbook-grades first-row">Grades</p>
                     <p className="markbook-average first-row">Average Grade</p>
 
-                    {grades.map(subject => (
-                        <>
-                            <p className="markbook-subject">{subject.subject}</p>
-                            <div className="markbook-grades">
-                                {subject.grades.map(grade => (
-                                    <span
-                                        className={`markbook-grade ${grade.grade >= 5 ? 'lime' : grade.grade >= 4 ? 'yellow' : grade.grade >= 3 ? 'orange' : 'red'}`}
-                                        onClick={() => setGradeDropdown(grade.id === gradeDropdown ? null : grade.id)}
-                                    >
-                                        {grade.grade}
-                                        {gradeDropdown === grade.id && <div className="grade-dropdown">Grade Description</div>}
-                                    </span>
-                                ))}
-                            </div>
-                            <div className="markbook-average">
-                                {calculateAverageGrade(subject.grades)}
-                            </div>
-                        </>
-                    ))}
+                    {
+                        grades.map(subject => (
+                            <>
+                                <p className="markbook-subject">{subject.subject}</p>
+                                <div className="markbook-grades">
+                                    {
+                                        subject.grades.map(grade => (
+                                            <span className={
+                                                grade.grade === 2 ?
+                                                    "markbook-grade red"
+                                                    :
+                                                    grade.grade === 3 ?
+                                                        "markbook-grade orange"
+                                                        :
+                                                        grade.grade === 4 ?
+                                                            "markbook-grade yellow"
+                                                            :
+                                                            grade.grade === 5 ?
+                                                                "markbook-grade lime"
+                                                                :
+                                                                grade.grade === 6 ?
+                                                                    "markbook-grade green"
+                                                                    :
+                                                                    "markbook-grade"
+                                            }
+                                                onClick={() => gradeDropdown === grade.id ? setGradeDropdown(null) : setGradeDropdown(grade.id)}
+                                            >
+                                                {grade.grade}
+                                                {
+                                                    gradeDropdown === grade.id &&
+                                                    <div className="grade-dropdown">Grade Description</div>
+                                                }
+                                            </span>
+                                        ))
+                                    }
+                                </div>
+                                <div className="markbook-average">
+                                    {
+                                        // ((subject.grades.reduce((a, b) => a.grade + b.grade, 0)) / subject.grades.length).toFixed(2)
+                                        ((subject.grades.map(grade => grade.grade).reduce((a, b) => a + b, 0)) / subject.grades.length).toFixed(2)
+                                    }
+                                </div>
+                            </>
+                        ))
+                    }
                 </div>
                 <div className="glass-avg">
                     <Glass classes="average-container purple">

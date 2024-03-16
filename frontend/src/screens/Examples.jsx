@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const Examples = () => {
-    const { tests, setTests, accountData } = useContext(DataContext)
+    const { tests, setTests, accountData, handleAlert } = useContext(DataContext)
 
     const id = useParams().id
 
@@ -28,31 +28,26 @@ const Examples = () => {
 
 
     // SOCKETS
-    const socket = new WebSocket('ws://localhost:8765')
-
-    socket.addEventListener("open", (event) => {
-        console.log('ws connection has started')
-
-        // if(teacher) socket.send('teacher-123')
-    });
-
-    // console.log(teacher)
+    const socket = new WebSocket('ws://localhost:8080')
 
     useEffect(() => {
         if(accountData.role) {
             console.log('Teacher view')
 
             socket.addEventListener("message", (event) => {
-                // console.log(event.data)
+                console.log(event.data)
+                handleAlert('info', `${event.data}`)
             });
 
+            socket.addEventListener("open", (event) => {
+                console.log('ws connection has started')
+        
+                if(accountData.role) socket.send('teacher-123')
+            });
         }
-    }, [accountData])
 
-
-    useEffect(() => {
         const handleSocket = () => {
-            if(document.hidden) {
+            if(document.hidden && !accountData.role) {
                 socket.send('User Alt Tabbed')
             };
         }
@@ -60,7 +55,9 @@ const Examples = () => {
         document.addEventListener('visibilitychange', handleSocket)
 
         return () => document.removeEventListener('visibilitychange', handleSocket)
-    }, [])
+    }, [accountData])
+
+
 
 
 

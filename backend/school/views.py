@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from .models import Question, Test, Answers, Class, Teacher, School, Subject, Student, Grade
 import json
 from .serializers import testSerializer
-# Create your views here.
 
 
 @api_view(['POST'])
@@ -94,65 +93,24 @@ def addGrade(request, *args, **kwargs):
     if request.method == "POST":
         body = request.body
         data = json.loads(body)
-        # type_ = str(data['type']).upper()
         comment = data['comment']
         grade = data['grade']
         subject = data['subject']
         subject = Subject.objects.get(name = subject)
-        holder_id = int(data['holder_id'])
+        holder_id = data['holder_id']
         holder = Student.objects.get(id = holder_id)
-        grade = Grade(comment = comment,
-                    grade = grade,
-                    subject = subject,
-                    holder = holder)
+        
+        grade = Grade(
+                      comment = comment,
+                      grade = grade,
+                      subject = subject,
+                      holder = holder)
         grade.save()
         return Response(data = {"message": 
                                 "The grade was successfully added"}, status=201)
-    else:
-        return Response(status=400)
 
-@api_view(['GET'])
-def testView(request, *args, **kwargs):
-    test = Test.objects.first()
-    serializer = testSerializer(instance=test)
-    return Response(serializer.data)
 
-@api_view(['POST', 'GET'])
-def answer_isCorrect(request, *args, **kwargs):
-    if request.method == 'POST':
-        body = request.body
-        data = json.loads(body)
-        answers = []
-        lists = data['lists']
-        for id in lists:
-            answer = Answers.objects.filter(id=id).first()
-            if answer:
-                # Append the answer details to the answers list
-                answers.append({
-                    'id': answer.id,
-                    'answer': answer.is_True
-                })
-            else:
-                # Handle case where answer is not found
-                answers.append({
-                    'id': id,
-                    'error': f"No answer found with the id: {id}"
-                })
-
-        # Return the constructed response with the answers list
-        return Response(data=answers, status=200)
-    else:
-        return Response(status=405)  # Method Not Allowed
-
-    
-# answers: [
-#     {
-#         id: 10
-#     },
-#     {
-#         id: 11
-#     },
-#     {
-#         id: 12
-#     }
-# ]
+# @api_view(['GET'])
+# def getTest(request, *args, **kwargs):
+#     if request.method == 'GET':
+#         student_id = request.GET.

@@ -48,7 +48,6 @@ class Student(models.Model):
     first_name = models.CharField(max_length=100, default='first')
     last_name = models.CharField(max_length=100 , default='last')
     school_class = models.ForeignKey('Class', on_delete=models.CASCADE)
-    grades = models.ManyToManyField('Grade', related_name='grades')
     def __str__(self):
         return self.name
     
@@ -98,7 +97,10 @@ class School(models.Model):
 
 class Test(models.Model):
     title = models.TextField(max_length = 100, default = "", null = False)
+    subject = models.ForeignKey('Subject', on_delete=models.CASCADE, default = "", null = False)
     teacher = models.ForeignKey('Teacher', on_delete=models.CASCADE, default = "", null = False)
+    Class = models.ForeignKey('Class', on_delete=models.CASCADE, default = "", null = False)
+
     def __str__(self):
         return self.title
     
@@ -112,8 +114,8 @@ class Question(models.Model):
     
 
 class Answers(models.Model):
-    type = models.BooleanField(default=0)  # 0 - for closed, 1 - for open
-    answer = models.CharField(max_length=1000, default="")  # Add default value here
+    type = models.BooleanField(default=0)  
+    answer = models.CharField(max_length=1000, default="") 
     is_True = models.BooleanField(default=0)
     question = models.ForeignKey('Question', on_delete=models.CASCADE, null=True)  
 
@@ -122,24 +124,4 @@ class Answers(models.Model):
 
     def __str__(self):
         return self.name
-    
-#class option_state(models.Model):
-#    option_s = models.BooleanField(default = False)
-#    option_m = models.ManyToManyField('Exercise'', related_name = 'option_m')
-#
-#class correct_answer(models.Model):
-#    name = models.TextField(max_length = 1000)
-#    correct_ans = models.ManyToManyField(Exercise, related_name='correct_ans')
-#    
-    
-#for later
-
-# class homework(models.Model):
-#     id = models.AutoField(primary_key=True)
-#     name = models.CharField(max_length=100)
-#     due_date = models.DateField()
-#     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    
-#     def __str__(self):
-#         return self.name
     

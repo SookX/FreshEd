@@ -30,29 +30,23 @@ const Examples = () => {
     // SOCKETS
     const socket = new WebSocket('ws://localhost:8765')
 
-    socket.addEventListener("open", (event) => {
-        console.log('ws connection has started')
-
-        // if(teacher) socket.send('teacher-123')
-    });
-
-    // console.log(teacher)
-
     useEffect(() => {
         if(accountData.role) {
             console.log('Teacher view')
 
-            socket.addEventListener("message", (event) => {
-                // console.log(event.data)
-            });
+            // socket.addEventListener("message", (event) => {
+            //     console.log(event.data)
+            // });
 
+            // socket.addEventListener("open", (event) => {
+            //     console.log('ws connection has started')
+        
+            //     if(accountData.role) socket.send('teacher-123')
+            // });
         }
-    }, [accountData])
 
-
-    useEffect(() => {
         const handleSocket = () => {
-            if(document.hidden) {
+            if(document.hidden && !accountData.role) {
                 socket.send('User Alt Tabbed')
             };
         }
@@ -60,7 +54,9 @@ const Examples = () => {
         document.addEventListener('visibilitychange', handleSocket)
 
         return () => document.removeEventListener('visibilitychange', handleSocket)
-    }, [])
+    }, [accountData])
+
+
 
 
 

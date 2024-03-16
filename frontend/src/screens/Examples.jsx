@@ -28,21 +28,21 @@ const Examples = () => {
 
 
     // SOCKETS
-    const socket = new WebSocket('ws://localhost:8765')
+    const socket = new WebSocket('ws://localhost:8080')
 
     useEffect(() => {
         if(accountData.role) {
             console.log('Teacher view')
 
-            // socket.addEventListener("message", (event) => {
-            //     console.log(event.data)
-            // });
+            socket.addEventListener("message", (event) => {
+                console.log(event.data)
+            });
 
-            // socket.addEventListener("open", (event) => {
-            //     console.log('ws connection has started')
+            socket.addEventListener("open", (event) => {
+                console.log('ws connection has started')
         
-            //     if(accountData.role) socket.send('teacher-123')
-            // });
+                if(accountData.role) socket.send('teacher-123')
+            });
         }
 
         const handleSocket = () => {

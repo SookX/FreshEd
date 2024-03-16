@@ -47,8 +47,7 @@ const Header = () => {
                 <nav className="main-nav">
                     <ul className="main-nav-list">
                         <li><Link to='/' className='main-nav-link'>Home</Link></li>
-                        <li><Link to='/' className='main-nav-link'>About us</Link></li>
-                        <li><Link to='/' className='main-nav-link'>Contact us</Link></li>
+
                         <li><Link to='/dashboard' className='main-nav-link'>Dashboard</Link></li>
                     </ul>
                 </nav>

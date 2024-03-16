@@ -38,6 +38,3 @@ const Glass = ({ children, classes = '' }) => {
 
 export default Glass;
 
-
-// green
-// purple

@@ -12,7 +12,6 @@ const Home = () => {
                 <div className="main-textbox">
                     <h1 className="heading">Educate better</h1>
                     <p className="main-text">Get your own learning program by using our platform</p>
-                    <button className="btn" onClick={() => handleAlert('success', 'Alerting the alert')}>Alert</button>
                 </div>
 
                 <img src={home} className='main-img' />

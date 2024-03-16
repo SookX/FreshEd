@@ -2,6 +2,7 @@ import { useState } from "react";
 import { PiStudent } from "react-icons/pi";
 import { MdAssignmentAdd } from "react-icons/md";
 import { FaRegCommentAlt } from "react-icons/fa";
+import { ImBooks } from "react-icons/im";
 import axios from "axios";
 
 const NewGrade = () => {
@@ -27,7 +28,7 @@ const NewGrade = () => {
 
             console.log('NEW GRADE')
             console.log(response)
-        } catch(err) {
+        } catch (err) {
             console.log(err)
         } finally {
             setGrade(6)
@@ -43,12 +44,12 @@ const NewGrade = () => {
             <hr className="vasi" />
             <div className="pfp-student">
                 <PiStudent className="pfp-icon" />
-                <input className="student" type="text" required placeholder="Student" value={student}
+                <input className="student" type="text" required value={student}
                     onChange={(e) => setStudent(e.target.value)} />
             </div>
-            <div>
-                <span className="pfp-icon"></span>
-                <select className="select-grade" required value={subject} onChange={(e) => setSubject(e.target.value)}>
+            <div className="comment-div">
+                <ImBooks className="pfp-icon" />
+                <select className="select-subject" required value={subject} onChange={(e) => setSubject(e.target.value)}>
                     <option value="Mathematics">Mathematics</option>
                     <option value="Literature">Literature</option>
                     <option value="English">English</option>

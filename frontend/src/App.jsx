@@ -17,6 +17,7 @@ import NewGrade from "./screens/NewGrade"
 import Toast from "./components/Toast"
 import Learning from "./screens/Learnings"
 import NewTest from "./screens/NewTest"
+import Teacher from "./screens/Teachersview"
 
 
 function App() {
@@ -48,6 +49,8 @@ function App() {
           <Route path="learnings/mylearning/:id" element={<MyLearning />} />
           <Route path="/test/:id" element={<Examples />} />
           <Route path="/info/:id" element={<Info />} />
+
+          <Route path="/teacher" element={<Teacher />} />
 
 
 

@@ -97,7 +97,10 @@ class School(models.Model):
 
 class Test(models.Model):
     title = models.TextField(max_length = 100, default = "", null = False)
+    subject = models.ForeignKey('Subject', on_delete=models.CASCADE, default = "", null = False)
     teacher = models.ForeignKey('Teacher', on_delete=models.CASCADE, default = "", null = False)
+    class_ = models.ForeignKey('Class', on_delete=models.CASCADE, default = "", null = False)
+
     def __str__(self):
         return self.title
     

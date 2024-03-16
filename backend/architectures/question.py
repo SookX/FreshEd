@@ -67,7 +67,7 @@ def answers(text, num_of_questions, num_of_answers):
     scores[i] = score
 
   sort_idx = np.argsort(-scores)
-
+  
   for i in sort_idx[:num_of_questions]:
 
     curr = {}
@@ -106,8 +106,3 @@ def answers(text, num_of_questions, num_of_answers):
   return test
 
     
-
-      
-    #print(generated_text)
-    #print("Generated text: ", texts)
-    #print(generated_question + res['answer'] )

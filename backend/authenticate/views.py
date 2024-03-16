@@ -23,19 +23,20 @@ def getPhoto(id):
 
 def getGrades(student_id):
     student = Student.objects.get(id=student_id)
-    grades = Grade.objects.filter(holder = student)
+    grades = Grade.objects.filter(holder=student)
 
     grades_list = []
     for grade in grades:
         grade_info = {
             'id': grade.id,
-            'subject': grade.subject.name,
+            'subject': grade.subject.name,  
             'grade': grade.grade,
             'comment': grade.comment
         }
         grades_list.append(grade_info)
 
     return grades_list
+    
 
 @api_view(['POST', 'GET'])
 def login(request, *args, **kwargs):
@@ -90,8 +91,9 @@ def isUser(request, *args, **kwargs):
                         'first_name': teacher.first_name,
                         'last_name': teacher.last_name,
                         'email': teacher.email,
-                        'subject_name': subject_instance.name if subject_instance else None,  # Extract subject name
-                        'school_name': school_name,
+                        'subject': class_name,
+                        'school_name': school_name
+        
                     }
                     return Response(data=data, status=200)
                 else:

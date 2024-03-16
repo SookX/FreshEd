@@ -63,7 +63,14 @@ const Examples = () => {
 
 
 
+    // SUBMITING
+    const [answers, setAnswers] = useState([])
 
+    const handleSubmit = () => {
+        console.log('ANSWERS')
+        console.log(answers)
+        setAnswers([])
+    }
 
 
 
@@ -85,36 +92,26 @@ const Examples = () => {
                         <Fragment key={i}>
                             <div className="testsheet">
                                 <h1 className="question">{question.question}</h1>
-                                {/* <ul className="answers">
-                                    {
-                                        question.answers.map((ans, k) => (
-                                            <li key={k} className="answer">
-                                                {q.option ? (
-                                                    <textarea />
-                                                ) : (
-                                                    <>
-                                                        <input name="q1" type="radio" className="radio-btn" />
-                                                        <span className="choose">{ans.answer}</span>
-
-                                                    </>
-
-                                                )}
-
-
-                                            </li>
-                                        ))
-                                    }
-                                </ul> */}
                                 {
                                     question.is_True ?
-                                    <ul className="answers"><li className="answer"><textarea /></li></ul>
+                                    <ul className="answers">
+                                        <li className="answer">
+                                            <textarea />
+                                        </li>
+                                    </ul>
                                     :
                                     <ul className="answers">
                                         {
                                             question.answers.map((ans, k) => (
                                                 <li key={k} className="answer">
-                                                    <input name={`q${i}`} type="radio" className="radio-btn" />
-                                                    <span className="choose">{ans.answer}</span>
+                                                    <input name={`q${i}`} type="radio" className="radio-btn" value={answers[i]} onChange={(e) => {
+                                                        let newArr = [...answers]
+
+                                                        newArr[i] = ans.id
+
+                                                        setAnswers(newArr)
+                                                    }}/>
+                                                    <span className="choose">{ans.answer} - {ans.id}</span>
                                                 </li>
                                             ))
                                         }
@@ -124,7 +121,7 @@ const Examples = () => {
                         </Fragment>
                     ))}
                     <div className="info-btn-container">
-                    <button className="info-btn">Submit</button>
+                    <button className="info-btn" onClick={handleSubmit}>Submit</button>
                 </div>
 
             </div>

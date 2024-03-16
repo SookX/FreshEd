@@ -48,7 +48,7 @@ const Examples = () => {
 
         const handleSocket = () => {
             if(document.hidden && !accountData.role) {
-                socket.send('User Alt Tabbed')
+                socket.send(`${accountData.first_name} ${accountData.last_name} Alt Tabbed`)
             };
         }
 

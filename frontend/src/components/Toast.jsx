@@ -30,7 +30,7 @@ const ToastAlert = ({ id = 0, type, message = 'Alert', autoClose = true, closeTi
 
     const closeAlert = () => {
         setClosed(id)
-        console.log(`Closed alert ${id}`)
+        // console.log(`Closed alert ${id}`)
 
         setTimeout(() => {
             setAlerts(alerts.filter(alert => alert.id !== id))

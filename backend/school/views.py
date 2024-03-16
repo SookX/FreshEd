@@ -117,17 +117,39 @@ def testView(request, *args, **kwargs):
 @api_view(['POST', 'GET'])
 def answer_isCorrect(request, *args, **kwargs):
     if request.method == 'POST':
-        id = request.data.get('id')
-    elif request.method == 'GET':
-        id = request.GET.get('id')
+        body = request.body
+        data = json.loads(body)
+        answers = []
+        lists = data['lists']
+        for id in lists:
+            answer = Answers.objects.filter(id=id).first()
+            if answer:
+                # Append the answer details to the answers list
+                answers.append({
+                    'id': answer.id,
+                    'answer': answer.is_True
+                })
+            else:
+                # Handle case where answer is not found
+                answers.append({
+                    'id': id,
+                    'error': f"No answer found with the id: {id}"
+                })
+
+        # Return the constructed response with the answers list
+        return Response(data=answers, status=200)
     else:
-        return Response(status=405)  # 
+        return Response(status=405)  # Method Not Allowed
+
     
-    try:
-        answer = Answers.objects.get(pk=id)
-        if answer.is_True:
-            return Response(f"The answer with this id ({id}) is correct.")
-        else:
-            return Response(f"The answer with this id ({id}) is incorrect.")
-    except Answers.DoesNotExist:
-        return Response(f"No answer found with the id: {id}", status=404)
+# answers: [
+#     {
+#         id: 10
+#     },
+#     {
+#         id: 11
+#     },
+#     {
+#         id: 12
+#     }
+# ]

@@ -7,6 +7,7 @@
 }
 
 .test-container {
+    position: relative;
     width: 75%;
     height: auto;
     background-color: rgb(47, 90, 127, 0.25);
@@ -65,7 +66,7 @@
 .radio-btn {
     width: 20px;
     height: 20px;
-    border: 3px solid green;
+    /* border: 3px solid green; */
 
     position: relative;
 }
@@ -80,4 +81,8 @@
     top: 0;
     z-index: 99999;
     background-color: var(--blue-tint-1);
+}
+
+.info-btn-container {
+    margin-top: 15rem;
 }

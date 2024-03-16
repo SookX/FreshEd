@@ -27,7 +27,11 @@ const Examples = () => {
 
 
     // SOCKETS
+<<<<<<< Updated upstream
     const socket = new WebSocket('ws://localhost:8000/ws/chat')
+=======
+    const socket = new WebSocket('ws://localhost:8765')
+>>>>>>> Stashed changes
 
     socket.addEventListener("open", (event) => {
         console.log('ws connection has started')
@@ -51,7 +55,9 @@ const Examples = () => {
 
     useEffect(() => {
         const handleSocket = () => {
-            if(document.hidden) socket.send('User Alt Tabbed');
+            if(document.hidden) {
+                socket.send('User Alt Tabbed')
+            };
         }
 
         document.addEventListener('visibilitychange', handleSocket)

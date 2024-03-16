@@ -52,6 +52,12 @@ class Student(models.Model):
     def __str__(self):
         return self.name
     
+class Log(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey('Student', on_delete=models.CASCADE, default = "", null = False)
+    test = models.ForeignKey('Test', on_delete=models.CASCADE, default = "", null = False)
+    message = models.CharField(max_length = 100, default = '', null = False)
+    
 class Class(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=2, default='8A')

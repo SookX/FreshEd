@@ -14,6 +14,7 @@ import Info from "./screens/Information"
 import MyProfile from "./screens/MyProfile"
 import MyLearning from "./screens/MyLearning"
 import NewGrade from "./screens/NewGrade"
+import Toast from "./components/Toast"
 
 
 function App() {
@@ -47,6 +48,8 @@ function App() {
 
 
         </Routes>
+
+        <Toast />
       </DataProvider>
 
     </>

@@ -27,11 +27,7 @@ const Examples = () => {
 
 
     // SOCKETS
-<<<<<<< Updated upstream
-    const socket = new WebSocket('ws://localhost:8000/ws/chat')
-=======
     const socket = new WebSocket('ws://localhost:8765')
->>>>>>> Stashed changes
 
     socket.addEventListener("open", (event) => {
         console.log('ws connection has started')

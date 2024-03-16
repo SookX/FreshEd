@@ -56,7 +56,7 @@ class Log(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey('Student', on_delete=models.CASCADE, default = "", null = False)
     test = models.ForeignKey('Test', on_delete=models.CASCADE, default = "", null = False)
-    message = models.CharField(max_length = 100, default = '', null = False)
+    message = models.CharField(max_length = 100, default = 'User Alt Tabbed', null = False)
     
 class Class(models.Model):
     id = models.AutoField(primary_key=True)

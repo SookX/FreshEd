@@ -14,6 +14,7 @@ import Info from "./screens/Information"
 import MyProfile from "./screens/MyProfile"
 import MyLearning from "./screens/MyLearning"
 import NewGrade from "./screens/NewGrade"
+import Learning from "./screens/Learnings"
 
 
 function App() {
@@ -36,10 +37,12 @@ function App() {
             <Route path="test" element={<Dashboard />} />
             <Route path="assignments" element={<Tests />} />
             <Route path="myprofile" element={<MyProfile />} />
-            <Route path="mylearning" element={<MyLearning />} />
+            <Route path="learnings" element={<Learning />} />
+
             <Route path="newgrade" element={<NewGrade />} />
           </Route>
 
+          <Route path="learnings/mylearning/:id" element={<MyLearning />} />
           <Route path="/test/:id" element={<Examples />} />
           <Route path="/info/:id" element={<Info />} />
 

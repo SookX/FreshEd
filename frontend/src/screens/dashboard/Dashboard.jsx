@@ -44,7 +44,7 @@ const Sidebar = () => {
                             <NavLink exact to="/dashboard" className="sidebar-nav-link">Markbook</NavLink>
                         </li>
                         <li>
-                            <NavLink exact to="/dashboard/mylearning" className="sidebar-nav-link">My Learning</NavLink>
+                            <NavLink exact to="/dashboard/learnings" className="sidebar-nav-link">My Learning</NavLink>
                         </li>
                         <li>
                             <NavLink exact to="assignments" className="sidebar-nav-link">Assignments</NavLink>

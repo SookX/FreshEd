@@ -130,76 +130,81 @@ const DataProvider = ({ children }) => {
 
     const corections = [
         {
-            "question": "What is the capital of France?",
-            "chosen": "Paris",
-            "correct": "London",
-            "description": "The capital of France is Paris, not London.",
-            "id": "1"
-        },
-        {
-            "question": "What is the largest planet in our solar system?",
-            "chosen": "Jupiter",
-            "correct": "Saturn",
-            "description": "The largest planet in our solar system is Jupiter, not Saturn.",
-            "id": "2"
-        },
-        {
-            "question": "What is the chemical symbol for gold?",
-            "chosen": "Au",
-            "correct": "Ag",
-            "description": "The chemical symbol for gold is Au, not Ag.",
-            "id": "3"
-        },
-        {
-            "question": "What is the tallest mountain in the world?",
-            "chosen": "Mount Everest",
-            "correct ": "Mount Kilimanjaro",
-            "description ": "The tallest mountain in the world is Mount Everest, not Mount Kilimanjaro.",
-            "id": "4"
-        },
-        {
-            "question": "What is the capital of Australia?",
-            "chosen": "Sydney",
-            "correct": "Canberra",
-            "description": "The capital of Australia is Canberra, not Sydney.",
-            "id": "5"
-        },
-        {
-            "question": "What is the symbol for the element hydrogen?",
-            "chosen": "Hg",
-            "correct": "H",
-            "description": "The symbol for the element hydrogen is H, not Hg.",
-            "id": "6"
-        },
-        {
-            "question": "What is the largest ocean in the world?",
-            "chosen": "Pacific Ocean",
-            "correct": "Indian Ocean",
-            "description": "The largest ocean in the world is the Pacific Ocean, not the Indian Ocean.",
-            "id": "7"
-        },
-        {
-            "question": "What is the capital of Canada?",
-            "chosen": "Toronto",
-            "correct": "Ottawa",
-            "description": "The capital of Canada is Ottawa, not Toronto.",
-            "id": "8"
-        },
-        {
-            "question": "What is the symbol for the element carbon?",
-            "chosen": "Ca",
-            "correct": "C",
-            "description": "The symbol for the element carbon is C, not Ca.",
-            "id": "9"
-        },
-        {
-            "question": "What is the longest river in the world?",
-            "chosen": "Nile River",
-            "correct": "Amazon River",
-            "description": "The longest river in the world is the Amazon River, not the Nile River.",
-            "id": "10"
+            "title": "Bulgarian",
+            "id": 1,
+            "mistakes": [
+                {
+                    "question": "What is the capital of France?",
+                    "chosen": "Paris",
+                    "correct": "London",
+                    "description": "The capital of France is Paris, not London.",
+                    "id": "1"
+                },
+                {
+                    "question": "What is the largest planet in our solar system?",
+                    "chosen": "Jupiter",
+                    "correct": "Saturn",
+                    "description": "The largest planet in our solar system is Jupiter, not Saturn.",
+                    "id": "2"
+                },
+                {
+                    "question": "What is the chemical symbol for gold?",
+                    "chosen": "Au",
+                    "correct": "Ag",
+                    "description": "The chemical symbol for gold is Au, not Ag.",
+                    "id": "3"
+                },
+                {
+                    "question": "What is the tallest mountain in the world?",
+                    "chosen": "Mount Everest",
+                    "correct ": "Mount Kilimanjaro",
+                    "description ": "The tallest mountain in the world is Mount Everest, not Mount Kilimanjaro.",
+                    "id": "4"
+                },
+                {
+                    "question": "What is the capital of Australia?",
+                    "chosen": "Sydney",
+                    "correct": "Canberra",
+                    "description": "The capital of Australia is Canberra, not Sydney.",
+                    "id": "5"
+                },
+                {
+                    "question": "What is the symbol for the element hydrogen?",
+                    "chosen": "Hg",
+                    "correct": "H",
+                    "description": "The symbol for the element hydrogen is H, not Hg.",
+                    "id": "6"
+                },
+                {
+                    "question": "What is the largest ocean in the world?",
+                    "chosen": "Pacific Ocean",
+                    "correct": "Indian Ocean",
+                    "description": "The largest ocean in the world is the Pacific Ocean, not the Indian Ocean.",
+                    "id": "7"
+                },
+                {
+                    "question": "What is the capital of Canada?",
+                    "chosen": "Toronto",
+                    "correct": "Ottawa",
+                    "description": "The capital of Canada is Ottawa, not Toronto.",
+                    "id": "8"
+                },
+                {
+                    "question": "What is the symbol for the element carbon?",
+                    "chosen": "Ca",
+                    "correct": "C",
+                    "description": "The symbol for the element carbon is C, not Ca.",
+                    "id": "9"
+                },
+                {
+                    "question": "What is the longest river in the world?",
+                    "chosen": "Nile River",
+                    "correct": "Amazon River",
+                    "description": "The longest river in the world is the Amazon River, not the Nile River.",
+                    "id": "10"
+                }]
         }
-    ]
+    ];
 
     return (
         <DataContext.Provider value={{

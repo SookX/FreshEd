@@ -3,20 +3,20 @@ from django.db import models
 
 class Grade(models.Model):
     id = models.AutoField(primary_key=True)
-    HOMEWORK = 'HW'
-    TEST = 'TE'
-    FINAL_EXAM = 'FE'
-    GRADE_TYPES = [
-        (HOMEWORK, 'Homework'),
-        (TEST, 'Test'),
-        (FINAL_EXAM, 'Final Exam'),
-    ]
+    # HOMEWORK = 'HW'
+    # TEST = 'TE'
+    # FINAL_EXAM = 'FE'
+    # GRADE_TYPES = [
+    #     (HOMEWORK, 'Homework'),
+    #     (TEST, 'Test'),
+    #     (FINAL_EXAM, 'Final Exam'),
+    # ]
 
-    type = models.CharField(
-        max_length=2,
-        choices=GRADE_TYPES,
-        default=HOMEWORK,
-    )
+    # type = models.CharField(
+    #     max_length=2,
+    #     choices=GRADE_TYPES,
+    #     default=HOMEWORK,
+    # )
     
     comment = models.TextField(max_length=100)
     grade = models.IntegerField(default = 2, null = False)

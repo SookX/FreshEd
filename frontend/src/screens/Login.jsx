@@ -26,7 +26,7 @@ const Login = () => {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/authenticate/isUser/', obj)
+            const response = await axios.post('http://127.0.0.1:8000/authenticate/login/', obj)
 
             console.log(response)
 

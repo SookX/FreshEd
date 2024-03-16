@@ -35,3 +35,8 @@
     color: white;
     text-decoration: none;
 }
+
+.dark-blue {
+    background-color: var(--blue-tint-1);
+    /* color: ; */
+}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from .validators import image_extension_validator
+from school.models import Student, Teacher
 
 
 def server_icon_upload_path(instance, filename):

@@ -19,6 +19,8 @@ const Tests = () => {
                     </Glass>
                 </div>
             ))}
+            <Link className="btn dark-blue" to="/dashboard/newgrade">+</Link>
+
         </div>
     );
 }

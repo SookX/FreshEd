@@ -11,13 +11,6 @@ class Grade(models.Model):
         (TEST, 'Test'),
         (FINAL_EXAM, 'Final Exam'),
     ]
-    GRADE_CHOICES = [
-        ('A', 'A'),
-        ('B', 'B'),
-        ('C', 'C'),
-        ('D', 'D'),
-        ('F', 'F'),
-    ]
 
     type = models.CharField(
         max_length=2,
@@ -26,7 +19,7 @@ class Grade(models.Model):
     )
     
     comment = models.TextField(max_length=100)
-    grade = models.CharField(max_length=1, choices=GRADE_CHOICES)
+    grade = models.IntegerField(default = 2, null = False)
     date = models.DateField(auto_now=True)
     subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
     holder = models.ForeignKey('Student', on_delete=models.CASCADE, default = '', null = False)
@@ -59,6 +52,12 @@ class Student(models.Model):
     def __str__(self):
         return self.name
     
+class Log(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey('Student', on_delete=models.CASCADE, default = "", null = False)
+    test = models.ForeignKey('Test', on_delete=models.CASCADE, default = "", null = False)
+    message = models.CharField(max_length = 100, default = 'User Alt Tabbed', null = False)
+    
 class Class(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=2, default='8A')
@@ -77,8 +76,6 @@ class Teacher(models.Model):
     subject = models.ForeignKey('Subject', on_delete=models.CASCADE)
     school = models.ForeignKey('School', on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.name
     
 class Subject(models.Model):
     id = models.AutoField(primary_key=True)

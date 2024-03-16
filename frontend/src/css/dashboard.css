@@ -54,6 +54,10 @@
     color: var(--green-tint-1);
 }
 
+.sidebar-nav-links .active:link,
+.sidebar-nav-links .active:visited {
+    color: var(--green-tint-1);
+}
 
 
 

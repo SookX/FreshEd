@@ -6,17 +6,37 @@ export const DataContext = createContext({})
 
 const DataProvider = ({ children }) => {
     // AXIOS INTERCEPTORS
-    axios.interceptors.request.use((request) => {
-        console.log('REQUEST')
-        console.log(request)
-        return request
-    })
+    // axios.interceptors.request.use((request) => {
+    //     // console.log('REQUEST')
+    //     // console.log(request)
+    //     return request
+    // })
 
-    axios.interceptors.response.use((response) => {
-        console.log('RESPONSE')
-        console.log(response)
-        return response
-    })
+    // axios.interceptors.response.use((response) => {
+    //     // console.log('RESPONSE')
+    //     // console.log(response)
+    //     return response
+    // })
+
+    // ALERTS
+
+    const [alerts, setAlerts] = useState([])
+
+    const handleAlert = (type, message, autoClose, closeTime) => {
+        const id = alerts.length ? alerts[alerts.length - 1].id + 1 : 1
+
+        const newAlert = {
+            id,
+            type,
+            message,
+            autoClose,
+            closeTime
+        }
+
+        setAlerts([...alerts, newAlert])
+    }
+
+
 
 
     // TESTS
@@ -26,14 +46,17 @@ const DataProvider = ({ children }) => {
         const fetching = async () => {
             const response = await axios.get('http://127.0.0.1:8000/school/api/testView/')
 
-            setTests(response.data[0].tests)
+            console.log('TESTS')
+            console.log(response)
+
+            setTests(response.data.tests)
         }
 
         fetching()
     }, [])
 
     useEffect(() => {
-        console.log(tests)
+        // console.log(tests)
     }, [tests])
 
 
@@ -46,16 +69,31 @@ const DataProvider = ({ children }) => {
 
     // LOGIN SYSTEM
     const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem('loggedIn')) || false)
-
-    useEffect(() => {
-        localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
-    }, [loggedIn])
+    const [accountData, setAccountData] = useState({})
 
     const fetchAccount = async () => {
-        if(loggedIn){
-            const response = await axios.post('', {id: JSON.parse(localStorage.getItem())})
+        if (loggedIn) {
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/authenticate/isUser/', { id: JSON.parse(localStorage.getItem('accData')).id })
+
+                setAccountData(response.data)
+            } catch (err) {
+                console.log(err)
+            }
         }
     }
+
+    useEffect(() => {
+        if (loggedIn) {
+            localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
+
+            fetchAccount()
+        }
+    }, [loggedIn])
+
+
+
+
 
     const assignments = [
         {
@@ -110,10 +148,83 @@ const DataProvider = ({ children }) => {
         }
     ];
 
+    const corections = [
+        {
+            "question": "What is the capital of France?",
+            "chosen": "Paris",
+            "correct": "London",
+            "description": "The capital of France is Paris, not London.",
+            "id": "1"
+        },
+        {
+            "question": "What is the largest planet in our solar system?",
+            "chosen": "Jupiter",
+            "correct": "Saturn",
+            "description": "The largest planet in our solar system is Jupiter, not Saturn.",
+            "id": "2"
+        },
+        {
+            "question": "What is the chemical symbol for gold?",
+            "chosen": "Au",
+            "correct": "Ag",
+            "description": "The chemical symbol for gold is Au, not Ag.",
+            "id": "3"
+        },
+        {
+            "question": "What is the tallest mountain in the world?",
+            "chosen": "Mount Everest",
+            "correct ": "Mount Kilimanjaro",
+            "description ": "The tallest mountain in the world is Mount Everest, not Mount Kilimanjaro.",
+            "id": "4"
+        },
+        {
+            "question": "What is the capital of Australia?",
+            "chosen": "Sydney",
+            "correct": "Canberra",
+            "description": "The capital of Australia is Canberra, not Sydney.",
+            "id": "5"
+        },
+        {
+            "question": "What is the symbol for the element hydrogen?",
+            "chosen": "Hg",
+            "correct": "H",
+            "description": "The symbol for the element hydrogen is H, not Hg.",
+            "id": "6"
+        },
+        {
+            "question": "What is the largest ocean in the world?",
+            "chosen": "Pacific Ocean",
+            "correct": "Indian Ocean",
+            "description": "The largest ocean in the world is the Pacific Ocean, not the Indian Ocean.",
+            "id": "7"
+        },
+        {
+            "question": "What is the capital of Canada?",
+            "chosen": "Toronto",
+            "correct": "Ottawa",
+            "description": "The capital of Canada is Ottawa, not Toronto.",
+            "id": "8"
+        },
+        {
+            "question": "What is the symbol for the element carbon?",
+            "chosen": "Ca",
+            "correct": "C",
+            "description": "The symbol for the element carbon is C, not Ca.",
+            "id": "9"
+        },
+        {
+            "question": "What is the longest river in the world?",
+            "chosen": "Nile River",
+            "correct": "Amazon River",
+            "description": "The longest river in the world is the Amazon River, not the Nile River.",
+            "id": "10"
+        }
+    ]
+
     return (
         <DataContext.Provider value={{
             loggedIn, setLoggedIn, navigate, sticky, setSticky, assignments,
-            tests, setTests
+            tests, setTests, accountData, corections, handleAlert, alerts, setAlerts
         }}>
             {children}
         </DataContext.Provider>

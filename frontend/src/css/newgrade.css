@@ -1,0 +1,106 @@
+.smth {
+    /* background-color: aqua; */
+
+    padding: 12.8rem;
+}
+
+.grade-title-1 {
+    font-size: 5rem;
+    /* text-align: center; */
+    margin-bottom: 1rem;
+}
+
+.vasi {
+
+    border: 0.5px solid var(--bg-tint-1);
+    margin-bottom: 2.4rem;
+}
+
+.pfp-student {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.student {
+
+    background-color: var(--blue-tint-1);
+    height: 4rem;
+    width: 20rem;
+    border: none;
+
+    border-radius: 15px;
+
+}
+
+.pfp-icon {
+
+    background-color: transparent;
+    height: 4rem;
+    width: 4rem;
+    border: none;
+}
+
+.grade {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.4rem;
+}
+
+.select-grade {
+    background-color: var(--bg-shade-2);
+    border: none;
+    height: 4rem;
+    width: 6rem;
+    font-size: 2.5rem;
+    font-family: inherit;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+}
+
+
+.comment-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.4rem;
+    gap: 2rem;
+}
+
+.comment {
+    background-color: var(--blue-tint-1);
+    height: 4rem;
+    width: 20rem;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn-div {
+    display: flex;
+    justify-content: end;
+}
+
+.btn-grade,
+.btn-grade:link,
+.btn-grade:visited {
+    background-color: var(--bg-shade-2);
+    border: none;
+    padding: 1.6rem 3.2rem;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.8rem;
+    font-family: inherit;
+
+    transition: .2s;
+
+
+}
+
+.btn-grade:hover,
+.btn-grade:active {
+    box-shadow: inset 0 0 0 2px var(--bg-shade-2);
+    background-color: transparent;
+}

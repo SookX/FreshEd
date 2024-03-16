@@ -2,7 +2,7 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import { DataContext } from "../context/DataContext";
 import { useParams } from "react-router-dom";
 
-const Examples = ({ teacher = false }) => {
+const Examples = () => {
     const { tests, setTests } = useContext(DataContext)
 
     const id = useParams().id
@@ -10,9 +10,14 @@ const Examples = ({ teacher = false }) => {
     const [currentTest, setCurrentTest] = useState()
 
     useEffect(() => {
-        console.log('CURRENT TEST')
+        // console.log('CURRENT TEST')
         if(tests) setCurrentTest(tests.find(test => test.id === +id))
     }, [tests, id])
+
+    // useEffect(() => {
+    //     console.log('CURRENT TEST')
+    //     console.log(currentTest)
+    // }, [currentTest])
 
 
 
@@ -22,31 +27,33 @@ const Examples = ({ teacher = false }) => {
 
 
     // SOCKETS
-    const socket = new WebSocket('ws://localhost:8080');
+    const socket = new WebSocket('ws://localhost:8765')
 
     socket.addEventListener("open", (event) => {
         console.log('ws connection has started')
 
-        if(teacher) socket.send('teacher-123')
+        // if(teacher) socket.send('teacher-123')
     });
 
-    console.log(teacher)
+    // console.log(teacher)
 
     useEffect(() => {
-        if(teacher) {
-            console.log('Teacher view')
+        // if(teacher) {
+            // console.log('Teacher view')
 
             socket.addEventListener("message", (event) => {
-                console.log(event.data)
+                // console.log(event.data)
             });
 
-        }
+        // }
     }, [])
 
 
     useEffect(() => {
         const handleSocket = () => {
-            if(document.hidden && teacher == false) socket.send('User Alt Tabbed');
+            if(document.hidden) {
+                socket.send('User Alt Tabbed')
+            };
         }
 
         document.addEventListener('visibilitychange', handleSocket)
@@ -58,7 +65,14 @@ const Examples = ({ teacher = false }) => {
 
 
 
+    // SUBMITING
+    const [answers, setAnswers] = useState([])
 
+    const handleSubmit = () => {
+        console.log('ANSWERS')
+        console.log(answers)
+        setAnswers([])
+    }
 
 
 
@@ -69,13 +83,6 @@ const Examples = ({ teacher = false }) => {
 
     return (
         <section className="main-test">
-            {/* {
-                teacher ?
-                <p>TEACHER</p>
-                :
-                <p>STUDENT</p>
-            }
-            <p>{id}</p> */}
             {
                 currentTest &&
                 <div className="test-container">
@@ -87,36 +94,26 @@ const Examples = ({ teacher = false }) => {
                         <Fragment key={i}>
                             <div className="testsheet">
                                 <h1 className="question">{question.question}</h1>
-                                {/* <ul className="answers">
-                                    {
-                                        question.answers.map((ans, k) => (
-                                            <li key={k} className="answer">
-                                                {q.option ? (
-                                                    <textarea />
-                                                ) : (
-                                                    <>
-                                                        <input name="q1" type="radio" className="radio-btn" />
-                                                        <span className="choose">{ans.answer}</span>
-
-                                                    </>
-
-                                                )}
-
-
-                                            </li>
-                                        ))
-                                    }
-                                </ul> */}
                                 {
                                     question.is_True ?
-                                    <ul className="answers"><li className="answer"><textarea /></li></ul>
+                                    <ul className="answers">
+                                        <li className="answer">
+                                            <textarea />
+                                        </li>
+                                    </ul>
                                     :
                                     <ul className="answers">
                                         {
                                             question.answers.map((ans, k) => (
                                                 <li key={k} className="answer">
-                                                    <input name={`q${i}`} type="radio" className="radio-btn" />
-                                                    <span className="choose">{ans.answer}</span>
+                                                    <input name={`q${i}`} type="radio" className="radio-btn" value={answers[i]} onChange={(e) => {
+                                                        let newArr = [...answers]
+
+                                                        newArr[i] = ans.id
+
+                                                        setAnswers(newArr)
+                                                    }}/>
+                                                    <span className="choose">{ans.answer} - {ans.id}</span>
                                                 </li>
                                             ))
                                         }
@@ -126,7 +123,7 @@ const Examples = ({ teacher = false }) => {
                         </Fragment>
                     ))}
                     <div className="info-btn-container">
-                    <button className="info-btn">Submit</button>
+                    <button className="info-btn" onClick={handleSubmit}>Submit</button>
                 </div>
 
             </div>
